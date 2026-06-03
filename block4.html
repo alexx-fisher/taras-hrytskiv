@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block 4 — Professional Work</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0c0c0c;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ═══ BLOCK 4 ═══ */
+    .b4 {
+      position: relative;
+      width: 100vw;
+      height: 48.958vw;
+      background: #0c0c0c;
+      overflow: hidden;
+    }
+
+    .b4__heading {
+      position: absolute;
+      left: 9.375vw;
+      top: 4.167vw;
+      width: 34.583vw;
+      font-weight: 100;
+      font-size: 3.819vw;
+      line-height: 3.819vw;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .b4__desc1 {
+      position: absolute;
+      left: 43.958vw;
+      top: 4.167vw;
+      width: 19.444vw;
+      font-weight: 300;
+      font-size: 1.042vw;
+      line-height: 1.319vw;
+      color: #fff;
+    }
+
+    .b4__desc2 {
+      position: absolute;
+      left: 43.958vw;
+      top: 9.514vw;
+      width: 18.403vw;
+      font-weight: 300;
+      font-size: 1.042vw;
+      line-height: 1.319vw;
+      color: #fff;
+    }
+
+    /* ── Button ── */
+    .b4__btn {
+      position: absolute;
+      left: 71.875vw;
+      top: 7.986vw;
+      width: 18.75vw;
+      height: 4.167vw;
+      border: 1px solid #777165;
+      border-radius: 10.417vw;
+      display: flex;
+      align-items: center;
+      padding: 0 2vw;
+      justify-content: space-between;
+      text-decoration: none;
+      overflow: hidden;
+      transition: border-color 0.5s ease;
+    }
+
+    .b4__btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 10.417vw;
+      background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+      clip-path: inset(0 100% 0 0 round 10.417vw);
+      transition: clip-path 0.4s ease;
+      z-index: 0;
+    }
+
+    .b4__btn:hover { border-color: #a09a8e; }
+    .b4__btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+    .b4__btn span {
+      font-weight: 300;
+      font-size: 0.972vw;
+      color: #777165;
+      text-transform: uppercase;
+      letter-spacing: 0.102vw;
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: color 0.4s ease;
+    }
+
+    .b4__btn:hover span { color: #fff; }
+
+    .b4__btn .arrow {
+      width: 0.934vw;
+      height: 0.934vw;
+      transform: rotate(-135deg);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.35s ease, filter 0.4s ease;
+    }
+
+    .b4__btn:hover .arrow {
+      transform: rotate(-90deg);
+      filter: brightness(10);
+    }
+
+    /* ── Carousel track ── */
+    .b4__carousel {
+      position: absolute;
+      top: 16.111vw;
+      left: 9.375vw;
+      /* exactly 4 cards + 3 gaps */
+      width: calc(4 * 19.792vw + 3 * 0.625vw);
+      height: 22.5vw;
+      overflow: hidden;
+    }
+
+    .b4__track {
+      display: flex;
+      gap: 0.625vw;
+      height: 100%;
+      transform: translateX(0);
+      transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+    }
+
+    /* ── Photos ── */
+    .b4__photo-wrap {
+      flex: 0 0 19.792vw;
+      height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .b4__photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .b4__photo-wrap:hover img { transform: scale(1.04); }
+
+    /* ── Number labels ── */
+    .b4__num {
+      position: absolute;
+      top: 15px;
+      left: 0.972vw;
+      font-weight: 400;
+      font-size: 0.833vw;
+      line-height: 1.528vw;
+      color: #fff;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── VIEW MORE WORK ── */
+    .b4__view-more {
+      position: absolute;
+      left: 29.792vw;
+      top: 41.875vw;
+      display: flex;
+      align-items: center;
+      gap: 0.556vw;
+      text-decoration: none;
+      cursor: pointer;
+      height: 1.181vw;
+    }
+
+    .b4__view-more span {
+      font-weight: 300;
+      font-size: 1.111vw;
+      line-height: 1.181vw;
+      color: #686868;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      width: 9.8vw;
+      display: inline-block;
+    }
+
+    .b4__view-more img {
+      width: 0.833vw;
+      height: 0.764vw;
+      transform: rotate(-90deg);
+      position: absolute;
+      left: 10.4vw;
+      top: 50%;
+      translate: 0 -50%;
+    }
+
+    /* ── Nav arrows ── */
+    .b4__nav {
+      position: absolute;
+      left: 82.778vw;
+      top: 40.625vw;
+      display: flex;
+      gap: 0.833vw;
+      align-items: center;
+    }
+
+    .b4__nav-btn {
+      width: 3.472vw;
+      height: 3.472vw;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+    }
+
+    .b4__nav-btn:hover {
+      transform: scale(1.12);
+    }
+
+    .b4__nav-btn img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: filter 0.25s ease;
+    }
+
+    .b4__nav-btn:hover img {
+      filter: brightness(0) invert(1); /* → white */
+    }
+
+    /* left arrow: rotated 180deg */
+    .b4__nav-btn--left img {
+      transform: rotate(180deg);
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes b4SlideLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes b4RiseUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .b4__heading,
+    .b4__desc1,
+    .b4__desc2,
+    .b4__btn,
+    .b4__photo-wrap {
+      opacity: 0;
+    }
+
+    .b4__heading.anim-in  { animation: b4SlideLeft 0.7s ease forwards; }
+
+    .b4__desc1.anim-in,
+    .b4__desc2.anim-in,
+    .b4__btn.anim-in,
+    .b4__photo-wrap.anim-in { animation: b4RiseUp 0.6s ease forwards; }
+
+    .b4__heading.anim-done,
+    .b4__desc1.anim-done,
+    .b4__desc2.anim-done,
+    .b4__btn.anim-done,
+    .b4__photo-wrap.anim-done { opacity: 1; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 2vw;
+      right: 2vw;
+      width: 3vw;
+      height: 3vw;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+
+    .lightbox__close:hover { transform: rotate(90deg); }
+
+    .lightbox__close::before,
+    .lightbox__close::after {
+      content: '';
+      position: absolute;
+      width: 2vw;
+      height: 1px;
+      background: #fff;
+    }
+
+    .lightbox__close::before { transform: rotate(45deg); }
+    .lightbox__close::after  { transform: rotate(-45deg); }
+
+    /* ── Lightbox nav arrows ── */
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3.472vw;
+      height: 3.472vw;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+      z-index: 10001;
+    }
+
+    .lightbox__nav:hover { transform: translateY(-50%) scale(1.12); }
+
+    .lightbox__nav img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: filter 0.25s ease;
+    }
+
+    .lightbox__nav:hover img { filter: brightness(0) invert(1); }
+
+    .lightbox__nav--left  { left: 2vw; }
+    .lightbox__nav--right { right: 2vw; }
+
+    .lightbox__nav--left img { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+<section class="b4">
+
+  <h2 class="b4__heading">PROFESSIONAL<br>WORK</h2>
+
+  <p class="b4__desc1">Every haircut is more than just technique — it's an understanding of shape, style, and the client's individuality.</p>
+  <p class="b4__desc2">Precision in every detail. Clean execution. Service at the highest level.</p>
+
+  <a href="#" class="b4__btn">
+    <span>Book Appointment</span>
+    <img class="arrow" src="assets/b4_arrow.svg" alt="" />
+  </a>
+
+  <div class="b4__carousel">
+    <div class="b4__track" id="b4Track">
+
+      <div class="b4__photo-wrap" data-src="assets/photo01.webp">
+        <p class="b4__num">[ 01 ]</p>
+        <img src="assets/photo01.webp" alt="Work 01" />
+      </div>
+
+      <div class="b4__photo-wrap" data-src="assets/photo02.webp">
+        <p class="b4__num">[ 02 ]</p>
+        <img src="assets/photo02.webp" alt="Work 02" />
+      </div>
+
+      <div class="b4__photo-wrap" data-src="assets/photo03.webp">
+        <p class="b4__num">[ 03 ]</p>
+        <img src="assets/photo03.webp" alt="Work 03" />
+      </div>
+
+      <div class="b4__photo-wrap" data-src="assets/photo04.webp">
+        <p class="b4__num">[ 04 ]</p>
+        <img src="assets/photo04.webp" alt="Work 04" />
+      </div>
+
+      <div class="b4__photo-wrap" data-src="assets/photo05.webp">
+        <p class="b4__num">[ 05 ]</p>
+        <img src="assets/photo05.webp" alt="Work 05" />
+      </div>
+
+    </div>
+  </div>
+
+  <a href="#" class="b4__view-more">
+    <span id="viewMoreText"></span>
+    <img src="assets/b4_chevron.svg" alt="" />
+  </a>
+
+  <!-- Nav arrows: left first, then right -->
+  <div class="b4__nav">
+    <div class="b4__nav-btn b4__nav-btn--left">
+      <img src="assets/b4_nav_right.svg" alt="prev" />
+    </div>
+    <div class="b4__nav-btn b4__nav-btn--right">
+      <img src="assets/b4_nav_right.svg" alt="next" />
+    </div>
+  </div>
+
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox__nav lightbox__nav--left" id="lightboxPrev">
+    <img src="assets/b4_nav_right.svg" alt="prev" />
+  </div>
+  <div class="lightbox__close" id="lightboxClose"></div>
+  <img src="" id="lightboxImg" alt="" />
+  <div class="lightbox__nav lightbox__nav--right" id="lightboxNext">
+    <img src="assets/b4_nav_right.svg" alt="next" />
+  </div>
+</div>
+
+<script>
+  // ── Lightbox ──
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn    = document.getElementById('lightboxClose');
+  const lbPrev      = document.getElementById('lightboxPrev');
+  const lbNext      = document.getElementById('lightboxNext');
+
+  const photos = ['assets/photo01.webp','assets/photo02.webp','assets/photo03.webp','assets/photo04.webp','assets/photo05.webp'];
+  let lbIndex = 0;
+
+  document.querySelectorAll('.b4__photo-wrap').forEach((wrap, i) => {
+    wrap.addEventListener('click', () => {
+      lbIndex = i;
+      lightboxImg.src = photos[lbIndex];
+      lightbox.classList.add('active');
+    });
+  });
+
+  function lbGo(idx) {
+    lbIndex = (idx + photos.length) % photos.length;
+    lightboxImg.src = photos[lbIndex];
+  }
+
+  function closeLightbox() { lightbox.classList.remove('active'); }
+  closeBtn.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+  lbPrev.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex - 1); });
+  lbNext.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex + 1); });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   lbGo(lbIndex - 1);
+    if (e.key === 'ArrowRight')  lbGo(lbIndex + 1);
+  });
+
+  // ── Carousel ──
+  const track   = document.getElementById('b4Track');
+  const TOTAL   = 5;
+  const VISIBLE = 4;
+  const MAX     = TOTAL - VISIBLE; // 1 — only one step
+  let current = 0;
+
+  function getSlideWidth() {
+    // vw-based: 19.792vw card + 0.625vw gap = 20.417vw — no DOM read
+    return window.innerWidth * 0.20417;
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, MAX));
+    scrollOffset = current * getSlideWidth();
+    track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+  }
+
+  document.querySelector('.b4__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
+  document.querySelector('.b4__nav-btn--right').addEventListener('click', () => goTo(current + 1));
+
+  // ── Entrance animations ──
+  (function() {
+    function animIn(el) {
+      el.classList.add('anim-in');
+      el.addEventListener('animationend', () => {
+        el.classList.remove('anim-in');
+        el.classList.add('anim-done');
+      }, { once: true });
+    }
+
+    const delays = [
+      ['.b4__heading',   0],
+      ['.b4__desc1',     0.08],
+      ['.b4__desc2',     0.16],
+      ['.b4__btn',       0.22],
+    ];
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        const el = e.target;
+        let delay = 0;
+        for (const [sel, d] of delays) {
+          if (el.matches(sel)) { delay = d; break; }
+        }
+        setTimeout(() => animIn(el), delay * 1000);
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.b4__heading, .b4__desc1, .b4__desc2, .b4__btn')
+      .forEach(el => obs.observe(el));
+
+    // photos: staggered chain
+    const photoObs = new IntersectionObserver(entries => {
+      if (!entries.some(e => e.isIntersecting)) return;
+      entries.forEach(e => photoObs.unobserve(e.target));
+      document.querySelectorAll('.b4__photo-wrap').forEach((el, i) => {
+        setTimeout(() => animIn(el), i * 80);
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.b4__photo-wrap').forEach(el => photoObs.observe(el));
+  })();
+
+  // ── Typewriter: VIEW MORE WORK ──
+  (function() {
+    const el   = document.getElementById('viewMoreText');
+    const full = 'View More Work';
+    let i = 0, deleting = false;
+    function tick() {
+      if (!deleting) {
+        el.textContent = full.slice(0, i + 1); i++;
+        if (i === full.length) { deleting = true; setTimeout(tick, 1400); return; }
+        setTimeout(tick, 55);
+      } else {
+        el.textContent = full.slice(0, i - 1); i--;
+        if (i === 0) { deleting = false; setTimeout(tick, 400); return; }
+        setTimeout(tick, 30);
+      }
+    }
+    setTimeout(tick, 600);
+  })();
+
+  // trackpad — free continuous scroll
+  let scrollOffset = 0;
+  const maxOffset = () => getSlideWidth() * MAX;
+
+  document.querySelector('.b4__carousel').addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    scrollOffset = Math.max(0, Math.min(scrollOffset + e.deltaX, maxOffset()));
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+    // snap current index for arrow buttons
+    current = Math.round(scrollOffset / getSlideWidth());
+  }, { passive: false });
+</script>
+
+</body>
+</html>

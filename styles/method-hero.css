@@ -1,0 +1,265 @@
+/* ═══ METHOD — Hero block ═══
+   Reference: 1440 × 670 px
+   Horizontal px → vw: value / 1440 * 100  */
+
+/* ── Load-in animations ── */
+@keyframes mhSlideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes mhFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mhBookRise {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.method-hero__heading,
+.method-hero__barber,
+.method-hero__desc-row,
+.method-hero__more-btn { opacity: 0; }
+
+.method-hero__heading  { animation: mhSlideLeft 0.75s ease forwards; animation-delay: 0.05s; }
+.method-hero__barber   { animation: mhSlideLeft 0.75s ease forwards; animation-delay: 0.18s; }
+.method-hero__desc-row { animation: mhSlideLeft 0.65s ease forwards; animation-delay: 0.45s; }
+.method-hero__more-btn { animation: mhFadeUp    0.6s  ease forwards; animation-delay: 0.6s;  }
+
+.method-hero__book {
+  opacity: 0;
+  animation: mhBookRise 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0s;
+}
+
+/* ── Section ── */
+.method-hero {
+  position: relative;
+  width: 100vw;
+  height: 46.528vw;   /* 670/1440 */
+  min-height: 670px;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+/* ── Background — точно как bbm-hero / index.html ── */
+.method-hero__mask-group {
+  position: absolute;
+  left: 0;
+  top: 4.861vw;     /* 70/1440 — под навом */
+  width: 100vw;
+  height: 41.667vw; /* 600/1440 */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.method-hero__bg-img {
+  position: absolute;
+  width: 41.667vw;
+  height: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ── Book mockup ── */
+.method-hero__book {
+  position: absolute;
+  left: -14.236vw;    /* -205/1440 */
+  top: -4.583vw;      /* -66/1440  */
+  width: 80.764vw;    /* 1163/1440 */
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Grain overlay ── */
+.method-hero__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/rectangle_pattern.png');
+  background-size: 220px 220px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Foreground z-layer ── */
+.method-hero__nav,
+.method-hero__side-text,
+.method-hero__heading,
+.method-hero__barber,
+.method-hero__desc-row,
+.method-hero__more-btn,
+.method-hero__scroll {
+  position: absolute;
+  z-index: 5;
+}
+
+/* ── Navigation ── */
+/* Nav reuses bbm-hero__nav classes — only section wrapper overrides needed */
+.method-hero .bbm-hero__nav  { position: absolute; z-index: 5; }
+.method-hero .bbm-hero__logo { position: absolute; z-index: 5; }
+
+/* ── Vertical side text ── */
+.method-hero__side-text {
+  left: 3.819vw;      /* ~55px — container's effective left after -translate-x-full */
+  top:  10.833vw;     /* 156/1440 */
+  width: 1.875vw;     /* 27/1440  */
+  height: 20.486vw;   /* 295/1440 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.method-hero__side-text span {
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  font-weight: 300;
+  font-size: 0.903vw;     /* 13/1440 */
+  letter-spacing: 0.632vw; /* 9.1/1440 */
+  color: #474747;
+  text-transform: uppercase;
+}
+
+/* ── Main heading ── */
+.method-hero__heading {
+  left: 44.722vw;     /* 644/1440 */
+  top:  9.722vw;      /* 140/1440 */
+  font-weight: 100;
+  font-size: 5.208vw; /* 75/1440  */
+  line-height: 5.208vw;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.method-hero__gold { color: #777165; }
+
+/* ── "BARBER" (third line, indented) ── */
+.method-hero__barber {
+  left: 57.083vw;     /* 822/1440 */
+  top:  20.139vw;     /* 290/1440 */
+  font-weight: 100;
+  font-size: 5.208vw;
+  line-height: 5.208vw;
+  color: #777165;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ── Desc row: line + text ── */
+.method-hero__desc-row {
+  left: 52.083vw;     /* 750/1440 */
+  top:  26.944vw;     /* 388/1440 */
+  display: flex;
+  align-items: flex-start;
+  gap: 0.903vw;       /* ~13px gap between line end and text */
+}
+
+.method-hero__line-decor {
+  width: 4.236vw;     /* 61/1440 */
+  height: 1px;
+  background: #777165;
+  flex-shrink: 0;
+  margin-top: 0.764vw; /* vertically center with first text line (~11px) */
+}
+
+.method-hero__desc {
+  width: 25.833vw;    /* 372/1440 */
+  font-weight: 300;
+  font-size: 1.181vw; /* 17/1440  */
+  line-height: 1.528vw;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.method-hero__desc .mh-gold { color: #777165; }
+.method-hero__desc .mh-white { color: #fff; }
+
+/* ── More Details button ── */
+.method-hero__more-btn {
+  left: 57.083vw;     /* 822/1440 */
+  top:  37.153vw;     /* 535/1440 */
+  width: 24.306vw;    /* 350/1440 */
+  height: 4.861vw;    /* 70/1440  */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 3.264vw;
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.method-hero__more-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.method-hero__more-btn:hover { border-color: #a09a8e; }
+.method-hero__more-btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.method-hero__more-btn span {
+  font-weight: 300;
+  font-size: 1.111vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.117vw;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  transition: color 0.4s ease;
+}
+
+.method-hero__more-btn:hover span { color: #fff; }
+
+.method-hero__more-btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  transition: transform 0.35s ease, filter 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.method-hero__more-btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+/* ── Scroll indicator ── */
+.method-hero__scroll {
+  left: 2.5vw;        /* 36/1440 */
+  top:  37.153vw;     /* 535/1440 */
+  width: 5.139vw;     /* 74/1440  */
+  height: 5.139vw;
+}
+
+.method-hero__scroll svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes mhScrollPulse {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.mh-scroll-arrow {
+  animation: mhScrollPulse 1.6s ease-in-out infinite;
+  transform-origin: center;
+}

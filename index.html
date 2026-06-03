@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taras Hrytskiv</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/block2.css" />
+  <link rel="stylesheet" href="styles/block3.css" />
+  <link rel="stylesheet" href="styles/block4.css" />
+  <link rel="stylesheet" href="styles/block5.css" />
+  <link rel="stylesheet" href="styles/block6.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+</head>
+<body>
+
+<!-- ═══ LOADER OVERLAY ═══ -->
+<style>
+  #loaderOverlay { position:fixed;inset:0;z-index:9999;background:#0c0c0c;transition:transform 0.7s cubic-bezier(0.76,0,0.24,1); }
+  .ldr-words { position:absolute;top:13.1vh;left:50%;transform:translateX(-50%);display:flex;gap:4.167vw;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:1.25vw;white-space:nowrap; }
+  .ldr-words span { color:#262626;transition:color 0.4s ease; }
+  .ldr-words span.lit { color:#ffffff; }
+  .ldr-ring { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7.057vw;height:7.057vw;display:flex;align-items:center;justify-content:center; }
+  .ldr-ring svg { position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg); }
+  .ldr-num { position:relative;z-index:1;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:100;font-size:1.736vw;color:#fff;letter-spacing:0.02em;line-height:1; }
+</style>
+<div id="loaderOverlay">
+  <div class="ldr-words">
+    <span>service.</span>
+    <span>brand.</span>
+    <span>growth.</span>
+  </div>
+  <div class="ldr-ring">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+      <circle id="loaderArc" cx="50" cy="50" r="45" fill="none" stroke="#777165" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="ldr-num" id="loaderNum">0%</span>
+  </div>
+</div>
+<script>
+(function () {
+  const overlay = document.getElementById('loaderOverlay');
+
+  // Show loader only on first ever visit
+  const firstVisit = !sessionStorage.getItem('siteVisited');
+
+  if (!firstVisit) {
+    // Internal navigation (HOME click etc.) — skip loader instantly
+    overlay.remove();
+    document.body.classList.add('loaded');
+    return;
+  }
+
+  sessionStorage.setItem('siteVisited', '1');
+
+  const DURATION = 2800;
+  const C        = 2 * Math.PI * 45;
+  const arc      = document.getElementById('loaderArc');
+  const num      = document.getElementById('loaderNum');
+  const words    = overlay.querySelectorAll('.ldr-words span');
+  const WORD_THRESHOLDS = [0.1, 0.4, 0.7];
+
+  arc.style.strokeDasharray  = C;
+  arc.style.strokeDashoffset = C;
+
+  let start = null, litWords = 0;
+  function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+  function tick(ts) {
+    if (!start) start = ts;
+    const raw   = Math.min((ts - start) / DURATION, 1);
+    const eased = ease(raw);
+    num.textContent = Math.floor(eased * 100) + '%';
+    arc.style.strokeDashoffset = C - eased * C;
+    while (litWords < words.length && eased >= WORD_THRESHOLDS[litWords]) {
+      words[litWords].classList.add('lit');
+      litWords++;
+    }
+    if (raw < 1) { requestAnimationFrame(tick); return; }
+    num.textContent = '100%';
+    arc.style.strokeDashoffset = 0;
+    words.forEach(w => w.classList.add('lit'));
+    setTimeout(() => {
+      overlay.style.transform = 'translateY(-100%)';
+      document.body.classList.add('loaded');
+      setTimeout(() => overlay.remove(), 700);
+    }, 350);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+<!-- ═══ BLOCK 1 — Hero ═══ -->
+<section class="hero">
+
+  <div class="hero__mask-group">
+    <img class="hero__bg-img" src="assets/bg_photo.webp" alt="" />
+    <img class="hero__screen2" src="assets/screen2_insta.webp" alt="" />
+    <img class="hero__portrait" src="assets/photo_main.webp" alt="" />
+  </div>
+
+  <nav class="hero__nav">
+    <img class="hero__logo" src="assets/logo.svg" alt="TH" />
+    <ul class="hero__nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mentorship.html">Mentorship</a></li>
+      <li><a href="index.html#works">Works</a></li>
+      <li><a href="method.html">Method</a></li>
+      <li><a href="index.html#media">Media</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#" class="hero__cta-btn">
+      <span>Book Consultation</span>
+    </a>
+  </nav>
+
+  <div class="hero__label-vertical">
+    <span>Educator &amp; Mentor</span>
+  </div>
+
+  <h1 class="hero__heading">
+    <span class="name-first">Taras&nbsp;</span>
+    <span class="name-last">Hrytskiv</span>
+  </h1>
+
+  <div class="hero__subtitle">
+    <span>Barber</span>
+    <img class="dot" src="assets/dot.svg" alt="•" />
+    <span>Los Angeles</span>
+  </div>
+
+  <div class="hero__line-decor"></div>
+
+  <div class="hero__desc">
+    <p>Barber, educator and mentor based in Los Angeles.</p>
+    <p>Over 9 years of experience in barbering, education<br>and professional development.</p>
+  </div>
+
+  <a href="#" class="hero__more-btn">
+    <span>More Details</span>
+    <img class="arrow" src="assets/arrow.svg" alt="" />
+  </a>
+
+  <div class="hero__scroll">
+    <svg viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M37 0C46.813 -4.2894e-07 56.2241 3.8982 63.163 10.837C70.1018 17.7759 74 27.187 74 37C74 46.813 70.1018 56.2241 63.163 63.1629C56.2241 70.1018 46.813 74 37 74L37 73.3812C46.6489 73.3812 55.9026 69.5482 62.7254 62.7254C69.5482 55.9026 73.3812 46.6489 73.3812 37C73.3812 27.3511 69.5482 18.0974 62.7254 11.2746C55.9026 4.45178 46.6489 0.618774 37 0.618774L37 0Z" fill="#474747"/>
+      <g class="scroll-arrow">
+        <path d="M31 34L37 40L43 34" stroke="#474747" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero__insta-card">
+    <div style="position:relative; display:flex; align-items:center;">
+      <div class="hero__insta-line"></div>
+      <span class="hero__insta-name">Taras Hrytskiv</span>
+    </div>
+    <span class="hero__insta-label">Educator &amp; Mentor</span>
+  </div>
+
+  <div class="hero__socials">
+    <a href="https://www.instagram.com/taras.cuts?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener"><img class="icon-instagram" src="assets/icon_instagram.svg" alt="Instagram" /></a>
+    <a href="https://youtube.com/@tarascuts?si=Wfja1_DEX-10b1oQ" target="_blank" rel="noopener"><img class="icon-youtube" src="assets/icon_youtube.svg" alt="YouTube" /></a>
+    <a href="https://www.tiktok.com/@taras_cuts?_r=1&_t=ZP-96fn0M9H2cR" target="_blank" rel="noopener"><img class="icon-tiktok" src="assets/icon_tiktok.svg" alt="TikTok" /></a>
+  </div>
+
+</section>
+
+
+<!-- ═══ BLOCK 2 — About Me ═══ -->
+<section class="about" id="about">
+  <div class="about__inner">
+
+    <h2 class="about__title">About Me</h2>
+
+    <p class="about__intro">
+      I'm <span class="accent">Taras Hrytskiv</span> — a barber, educator
+      and mentor from Ukraine with over <span class="accent">9 years of experience</span>
+      in the barber industry.
+    </p>
+
+    <p class="about__story">
+      My professional journey began in Ukraine, where I became a co-owner of
+      <span class="accent">Billy Blade Barbershop</span> and participated in the
+      development of modern barber education, events and professional culture.
+    </p>
+
+    <img class="about__photo-main" src="assets/portrait-main.jpg" alt="Taras Hrytskiv portrait" />
+    <img class="about__photo-small-tr" src="assets/dsc01635.webp" alt="Barbershop" />
+    <img class="about__photo-small-bl" src="assets/dsc01629.webp" alt="Barber at work" />
+
+    <p class="about__col-right-1">
+      Over the years, I helped organize barber masterclasses and industry events
+      attended by hundreds of barbers, focusing on service, communication,
+      branding and long-term professional growth.
+    </p>
+
+    <p class="about__col-right-2">
+      After moving to the United States, I continued building my career
+      independently in Los Angeles while mentoring Ukrainian barbers who want
+      to grow professionally in the U.S. market.
+    </p>
+
+    <p class="about__method">
+      Today, I focus on barber education, mentorship and professional
+      development through my own educational system —
+      <span class="accent">"The Method of Successful Barber"</span>
+      — a methodology based on real industry experience, client service,
+      communication and personal branding.
+    </p>
+
+    <p class="about__belief">
+      I believe modern barbering is not only technical skill, but also
+      professionalism, trust, education and long-term impact.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══ BLOCK 3 — Barber Brand Mentorship ═══ -->
+<section class="block3">
+
+  <h2 class="block3__heading">BARBER BRAND<br>MENTORSHIP</h2>
+
+  <p class="block3__subtitle">
+    <span class="accent">Author's Mentorship<br>Program</span> for Ukrainian<br>
+    Barbers in the U.S.
+  </p>
+
+  <div class="block3__line-decor"></div>
+
+  <p class="block3__desc">
+    For barbers ready to turn skill into a system through service, personal brand, and modern barbering.
+  </p>
+
+  <a href="mentorship.html" class="block3__btn">
+    <span>More Details</span>
+    <img class="arrow" src="assets/b3_arrow.svg" alt="" />
+  </a>
+
+  <img class="block3__mockup" src="assets/mockup.webp" alt="Mentorship mockup" />
+
+  <div class="block3__labels">
+    <p class="label-cycle label-1">Service.</p>
+    <p class="label-cycle label-2">Brand.</p>
+    <p class="label-cycle label-3">Growth.</p>
+  </div>
+
+</section>
+
+
+<!-- ═══ BLOCK 4 — Professional Work ═══ -->
+<section class="b4" id="works">
+
+  <h2 class="b4__heading">PROFESSIONAL<br>WORK</h2>
+
+  <p class="b4__desc1">Every haircut is more than just technique — it's an understanding of shape, style, and the client's individuality.</p>
+  <p class="b4__desc2">Precision in every detail. Clean execution. Service at the highest level.</p>
+
+  <a href="https://tarascuts.square.site/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnB7GupTuevOWsZ6xfiOWYEQfrhO7IDQ-v66HSNcScLyQvKlIVepWScdtV86A_aem_5RPOxdwZRfOKN7ewk3y-qg&utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noopener" class="b4__btn">
+    <span>Book Appointment</span>
+    <img class="arrow" src="assets/b4_arrow.svg" alt="" />
+  </a>
+
+  <div class="b4__carousel">
+    <div class="b4__track" id="b4Track">
+      <div class="b4__photo-wrap" data-src="assets/photo01.webp">
+        <p class="b4__num">[ 01 ]</p>
+        <img src="assets/photo01.webp" alt="Work 01" />
+      </div>
+      <div class="b4__photo-wrap" data-src="assets/photo02.webp">
+        <p class="b4__num">[ 02 ]</p>
+        <img src="assets/photo02.webp" alt="Work 02" />
+      </div>
+      <div class="b4__photo-wrap" data-src="assets/photo03.webp">
+        <p class="b4__num">[ 03 ]</p>
+        <img src="assets/photo03.webp" alt="Work 03" />
+      </div>
+      <div class="b4__photo-wrap" data-src="assets/photo04.webp">
+        <p class="b4__num">[ 04 ]</p>
+        <img src="assets/photo04.webp" alt="Work 04" />
+      </div>
+      <div class="b4__photo-wrap" data-src="assets/photo05.webp">
+        <p class="b4__num">[ 05 ]</p>
+        <img src="assets/photo05.webp" alt="Work 05" />
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="b4__view-more">
+    <span id="viewMoreText"></span>
+    <img src="assets/b4_chevron.svg" alt="" />
+  </a>
+
+  <div class="b4__nav">
+    <div class="b4__nav-btn b4__nav-btn--left">
+      <img src="assets/b4_nav_right.svg" alt="prev" />
+    </div>
+    <div class="b4__nav-btn b4__nav-btn--right">
+      <img src="assets/b4_nav_right.svg" alt="next" />
+    </div>
+  </div>
+
+</section>
+
+<!-- Lightbox (block 4) -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox__nav lightbox__nav--left" id="lightboxPrev">
+    <img src="assets/b4_nav_right.svg" alt="prev" />
+  </div>
+  <div class="lightbox__close" id="lightboxClose"></div>
+  <img src="" id="lightboxImg" alt="" />
+  <div class="lightbox__nav lightbox__nav--right" id="lightboxNext">
+    <img src="assets/b4_nav_right.svg" alt="next" />
+  </div>
+</div>
+
+
+<!-- ═══ BLOCK 5 — The Method ═══ -->
+<section class="b5">
+
+  <h2 class="b5__heading">
+    <span class="b5__h-line">THE METHOD OF</span>
+    <span class="b5__h-line">A SUCCESSFUL</span>
+    <span class="b5__h-line">BARBER</span>
+  </h2>
+
+  <p class="b5__subtitle">
+    <span class="muted">A proprietary system<br>for professional barber<br>development</span><span class="bright">, built on over 9<br>years of hands-on experience<br>in the barbering industry</span>
+  </p>
+
+  <a href="method.html" class="b5__btn">
+    <span>Access The Method</span>
+    <img class="arrow" src="assets/b4_arrow.svg" alt="" />
+  </a>
+
+  <div class="b5__img-wrap">
+    <img src="assets/b5_photo.webp" alt="The Method of a Successful Barber" />
+  </div>
+
+</section>
+
+
+<!-- ═══ BLOCK 6 — Press & Publications ═══ -->
+<section class="b6" id="media">
+
+  <h2 class="b6__heading">PRESS &amp;<br>PUBLICATIONS</h2>
+
+  <p class="b6__desc">Insights, interviews, and editorial features sharing the experience, principles, and systems behind the brand.</p>
+
+  <div class="b6__nav">
+    <div class="b6__nav-btn b6__nav-btn--left">
+      <img src="assets/b6_nav_right.svg" alt="prev" />
+    </div>
+    <div class="b6__nav-btn b6__nav-btn--right">
+      <img src="assets/b6_nav_right.svg" alt="next" />
+    </div>
+  </div>
+
+  <a href="#" class="b6__view-more"><span id="b6ViewMore"></span></a>
+
+  <div class="b6__mag-wrap b6__mag-wrap-1">
+    <div class="b6__mag b6__mag-1">
+      <img src="assets/b6_photo.webp" alt="Fast Company" />
+    </div>
+  </div>
+  <a href="#" class="b6__read b6__read-1"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+
+  <div class="b6__mag-wrap b6__mag-wrap-2">
+    <div class="b6__mag b6__mag-2">
+      <img src="assets/b6_photo.webp" alt="Forbes" />
+    </div>
+  </div>
+  <a href="#" class="b6__read b6__read-2"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+
+  <div class="b6__mag-wrap b6__mag-wrap-3">
+    <div class="b6__mag b6__mag-3">
+      <img src="assets/journal03.webp" alt="Journal 03" />
+    </div>
+  </div>
+  <a href="#" class="b6__read b6__read-3"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="ft" id="contact">
+
+  <div class="ft__panel"></div>
+
+  <img class="ft__logo" src="assets/ft_logo.svg" alt="TH" />
+
+  <a href="https://www.instagram.com/taras.cuts?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="ft__social ft__social-instagram">Instagram</a>
+  <a href="https://youtube.com/@tarascuts?si=Wfja1_DEX-10b1oQ" target="_blank" rel="noopener" class="ft__social ft__social-youtube">YouTube</a>
+  <a href="https://www.tiktok.com/@taras_cuts?_r=1&_t=ZP-96fn0M9H2cR" target="_blank" rel="noopener" class="ft__social ft__social-tiktok">TikTok</a>
+
+  <p class="ft__col-title ft__col-title-nav">Navigation</p>
+  <nav class="ft__nav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Mentorship</a>
+    <a href="#">Works</a>
+    <a href="#">Method</a>
+    <a href="#">Media</a>
+  </nav>
+
+  <p class="ft__col-title ft__col-title-contact">Contact</p>
+  <div class="ft__contact">
+    <a href="mailto:hello@tarashrytskiv.com">hello@tarashrytskiv.com</a>
+    <a href="tel:+17472878064">+1 (747) 287 80 64</a>
+    <span>Los Angeles, CA</span>
+  </div>
+
+  <p class="ft__col-title ft__col-title-talk">Let's Talk</p>
+  <a href="#" class="ft__talk-btn">
+    <img src="assets/ft_arrow.svg" alt="→" />
+  </a>
+
+  <a href="#" class="ft__legal ft__legal-privacy">Privacy Policy</a>
+  <a href="#" class="ft__legal ft__legal-terms">Terms of Service</a>
+
+</footer>
+
+
+<script>
+// ═══ BLOCK 2 & 3 — Scroll animations ═══
+(function () {
+  const delays = {
+    '.about__intro':          0.05,
+    '.about__story':          0.15,
+    '.about__photo-small-tr': 0.10,
+    '.about__photo-main':     0.20,
+    '.about__photo-small-bl': 0.30,
+    '.about__col-right-1':    0.20,
+    '.about__col-right-2':    0.30,
+    '.about__method':         0.25,
+    '.about__belief':         0.35,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      observer.unobserve(el);
+      let delay = 0;
+      for (const [sel, d] of Object.entries(delays)) {
+        if (el.matches(sel)) { delay = d; break; }
+      }
+      setTimeout(() => {
+        el.classList.add('anim-in');
+        el.addEventListener('animationend', () => {
+          el.classList.remove('anim-in');
+          el.classList.add('anim-done');
+        }, { once: true });
+      }, delay * 1000);
+    });
+  }, { threshold: 0.15 });
+
+  const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      titleObserver.unobserve(entry.target);
+      const t = entry.target;
+      t.classList.add('anim-in');
+      t.addEventListener('animationend', () => {
+        t.classList.remove('anim-in');
+        t.classList.add('anim-done');
+      }, { once: true });
+    });
+  }, { threshold: 0.1 });
+
+  const title = document.querySelector('.about__title');
+  if (title) titleObserver.observe(title);
+
+  document.querySelectorAll('.about__intro, .about__story, .about__photo-main, .about__photo-small-tr, .about__photo-small-bl, .about__col-right-1, .about__col-right-2, .about__method, .about__belief')
+    .forEach(el => observer.observe(el));
+
+  const b3delays = {
+    '.block3__heading':    0,
+    '.block3__subtitle':   0.1,
+    '.block3__line-decor': 0.2,
+    '.block3__desc':       0.2,
+    '.block3__btn':        0.35,
+    '.block3__labels':     0.15,
+    '.block3__mockup':     0.25,
+  };
+
+  const b3observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      b3observer.unobserve(entry.target);
+      const el = entry.target;
+      let delay = 0;
+      for (const [sel, d] of Object.entries(b3delays)) {
+        if (el.matches(sel)) { delay = d; break; }
+      }
+      setTimeout(() => {
+        el.classList.add('anim-in');
+        el.addEventListener('animationend', () => {
+          el.classList.remove('anim-in');
+          el.classList.add('anim-done');
+        }, { once: true });
+      }, delay * 1000);
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.block3__heading, .block3__subtitle, .block3__line-decor, .block3__desc, .block3__btn, .block3__labels, .block3__mockup')
+    .forEach(el => b3observer.observe(el));
+})();
+
+
+// ═══ BLOCK 4 — Lightbox ═══
+(function() {
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn    = document.getElementById('lightboxClose');
+  const lbPrev      = document.getElementById('lightboxPrev');
+  const lbNext      = document.getElementById('lightboxNext');
+
+  const photos = ['assets/photo01.webp','assets/photo02.webp','assets/photo03.webp','assets/photo04.webp','assets/photo05.webp'];
+  let lbIndex = 0;
+
+  document.querySelectorAll('.b4__photo-wrap').forEach((wrap, i) => {
+    wrap.addEventListener('click', () => {
+      lbIndex = i;
+      lightboxImg.src = photos[lbIndex];
+      lightbox.classList.add('active');
+    });
+  });
+
+  function lbGo(idx) { lbIndex = (idx + photos.length) % photos.length; lightboxImg.src = photos[lbIndex]; }
+  function closeLightbox() { lightbox.classList.remove('active'); }
+
+  closeBtn.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+  lbPrev.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex - 1); });
+  lbNext.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex + 1); });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  lbGo(lbIndex - 1);
+    if (e.key === 'ArrowRight') lbGo(lbIndex + 1);
+  });
+})();
+
+
+// ═══ BLOCK 4 — Carousel ═══
+(function() {
+  const track = document.getElementById('b4Track');
+  const MAX = 1;
+  let current = 0;
+  let scrollOffset = 0;
+
+  // Pre-apply transform so GPU layer is promoted at load, not on first click
+  track.style.transform = 'translateX(0px)';
+
+  // vw-based calculation — no DOM read, no forced reflow
+  function getSlideWidth() {
+    // card: 19.792vw + gap: 0.625vw = 20.417vw
+    return window.innerWidth * 0.20417;
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, MAX));
+    scrollOffset = current * getSlideWidth();
+    track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+  }
+
+  document.querySelector('.b4__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
+  document.querySelector('.b4__nav-btn--right').addEventListener('click', () => goTo(current + 1));
+
+  document.querySelector('.b4__carousel').addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    scrollOffset = Math.max(0, Math.min(scrollOffset + e.deltaX, getSlideWidth() * MAX));
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+    current = Math.round(scrollOffset / getSlideWidth());
+  }, { passive: false });
+})();
+
+
+// ═══ BLOCK 4 — Entrance animations ═══
+(function() {
+  function animIn(el) {
+    el.classList.add('anim-in');
+    el.addEventListener('animationend', () => {
+      el.classList.remove('anim-in');
+      el.classList.add('anim-done');
+    }, { once: true });
+  }
+
+  const delays = [
+    ['.b4__heading', 0],
+    ['.b4__desc1',   0.08],
+    ['.b4__desc2',   0.16],
+    ['.b4__btn',     0.22],
+  ];
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      obs.unobserve(e.target);
+      const el = e.target;
+      let delay = 0;
+      for (const [sel, d] of delays) { if (el.matches(sel)) { delay = d; break; } }
+      setTimeout(() => animIn(el), delay * 1000);
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.b4__heading, .b4__desc1, .b4__desc2, .b4__btn').forEach(el => obs.observe(el));
+
+  const photoObs = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    document.querySelectorAll('.b4__photo-wrap').forEach(el => photoObs.unobserve(el));
+    document.querySelectorAll('.b4__photo-wrap').forEach((el, i) => {
+      setTimeout(() => animIn(el), i * 80);
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.b4__photo-wrap').forEach(el => photoObs.observe(el));
+})();
+
+
+// ═══ BLOCK 4 — Typewriter ═══
+(function() {
+  const el = document.getElementById('viewMoreText');
+  const full = 'View More Work';
+  let i = 0, deleting = false;
+  function tick() {
+    if (!deleting) {
+      el.textContent = full.slice(0, i + 1); i++;
+      if (i === full.length) { deleting = true; setTimeout(tick, 1400); return; }
+      setTimeout(tick, 55);
+    } else {
+      el.textContent = full.slice(0, i - 1); i--;
+      if (i === 0) { deleting = false; setTimeout(tick, 400); return; }
+      setTimeout(tick, 30);
+    }
+  }
+  setTimeout(tick, 600);
+})();
+
+
+// ═══ BLOCK 5 — Entrance animations ═══
+(function() {
+  function animIn(el) {
+    el.classList.add('anim-in');
+    el.addEventListener('animationend', () => {
+      el.classList.remove('anim-in');
+      el.classList.add('anim-done');
+    }, { once: true });
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    entries.forEach(e => obs.unobserve(e.target));
+
+    document.querySelectorAll('.b5__h-line').forEach((el, i) => {
+      setTimeout(() => animIn(el), i * 100);
+    });
+    setTimeout(() => animIn(document.querySelector('.b5__subtitle')), 300);
+    setTimeout(() => animIn(document.querySelector('.b5__img-wrap')), 100);
+    setTimeout(() => animIn(document.querySelector('.b5__btn')),      300);
+  }, { threshold: 0.15 });
+
+  obs.observe(document.querySelector('.b5'));
+})();
+
+
+// ═══ BLOCK 6 — Entrance animations ═══
+(function() {
+  function animIn(el) {
+    el.classList.add('anim-in');
+    el.addEventListener('animationend', () => {
+      el.classList.remove('anim-in');
+      el.classList.add('anim-done');
+    }, { once: true });
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    entries.forEach(e => obs.unobserve(e.target));
+
+    setTimeout(() => animIn(document.querySelector('.b6__heading')),    0);
+    setTimeout(() => animIn(document.querySelector('.b6__desc')),      100);
+    setTimeout(() => animIn(document.querySelector('.b6__nav')),       200);
+    setTimeout(() => animIn(document.querySelector('.b6__view-more')), 300);
+
+    document.querySelectorAll('.b6__mag-wrap').forEach((el, i) => {
+      setTimeout(() => animIn(el), i * 100);
+    });
+    document.querySelectorAll('.b6__read').forEach((el, i) => {
+      setTimeout(() => animIn(el), 200 + i * 100);
+    });
+  }, { threshold: 0.15 });
+
+  obs.observe(document.querySelector('.b6'));
+})();
+
+
+// ═══ BLOCK 6 — Typewriter ═══
+(function() {
+  const el = document.getElementById('b6ViewMore');
+  const full = 'View More Publication';
+  let i = 0, deleting = false;
+  function tick() {
+    if (!deleting) {
+      el.textContent = full.slice(0, i + 1); i++;
+      if (i === full.length) { deleting = true; setTimeout(tick, 1400); return; }
+      setTimeout(tick, 55);
+    } else {
+      el.textContent = full.slice(0, i - 1); i--;
+      if (i === 0) { deleting = false; setTimeout(tick, 400); return; }
+      setTimeout(tick, 30);
+    }
+  }
+  setTimeout(tick, 600);
+})();
+</script>
+
+</body>
+</html>

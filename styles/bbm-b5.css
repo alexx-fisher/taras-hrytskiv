@@ -1,0 +1,147 @@
+/* ═══ BBM BLOCK 5 — Foundation of the approach ═══
+   Reference: 1440px base                            */
+
+/* ── Entrance animations ── */
+@keyframes bbmB5FadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bbmB5SlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bbm-b5__heading,
+.bbm-b5__subtitle,
+.bbm-b5__card { opacity: 0; }
+
+.bbm-b5__heading.anim-in  { animation: bbmB5SlideLeft 0.7s ease forwards; }
+.bbm-b5__subtitle.anim-in { animation: bbmB5FadeUp 0.6s ease forwards; }
+.bbm-b5__card.anim-in     { animation: bbmB5FadeUp 0.55s ease forwards; }
+
+/* Bottom row — faster appearance */
+.bbm-b5__card--c1r2.anim-in,
+.bbm-b5__card--c2r2.anim-in,
+.bbm-b5__card--c3r2.anim-in { animation-duration: 0.35s; }
+
+.bbm-b5__heading.anim-done,
+.bbm-b5__subtitle.anim-done,
+.bbm-b5__card.anim-done   { opacity: 1; }
+
+/* ── Section ── */
+.bbm-b5 {
+  position: relative;
+  width: 100vw;
+  height: 42vw;          /* ~605px */
+  background: #0c0c0c;
+}
+
+/* ── Heading ── */
+.bbm-b5__heading {
+  position: absolute;
+  left: 9.375vw;         /* 135/1440 */
+  top: 4.167vw;          /* 60/1440 */
+  width: 34.583vw;       /* 498/1440 */
+  font-weight: 100;
+  font-size: 3.819vw;    /* 55/1440 */
+  line-height: 4.167vw;  /* 60/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Subtitle ── */
+.bbm-b5__subtitle {
+  position: absolute;
+  left: 14.444vw;        /* 208/1440 */
+  top: 21.25vw;          /* 306/1440 */
+  width: 16vw;
+  font-weight: 300;
+  font-size: 1.181vw;    /* 17/1440 */
+  line-height: 1.528vw;  /* 22/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Cards base ── */
+.bbm-b5__card {
+  position: absolute;
+  width: 18.611vw;       /* 268/1440 */
+  height: 9.236vw;       /* 133/1440 */
+  background: #161616;
+  border: 1px solid #1b1b1b;
+  overflow: hidden;
+  padding: 1.111vw 1.806vw; /* inner padding ~16px 26px */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.417vw;
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    transform      0.5s  cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius  0.4s  cubic-bezier(0.22, 1, 0.36, 1),
+    background     0.3s  ease,
+    border-color   0.3s  ease,
+    filter         0.35s ease,
+    z-index        0s;
+}
+
+/* Subtle corner glow */
+.bbm-b5__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 100%, rgba(119,113,101,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 0%, rgba(119,113,101,0.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ── Hover: только обводка ── */
+.bbm-b5__card:hover {
+  border-color: #777165;
+}
+
+/* Text transitions */
+.bbm-b5__num,
+.bbm-b5__label {
+  transition: color 0.25s ease;
+}
+
+/* (highlight removed — all cards identical) */
+
+/* ── Numbers ── */
+.bbm-b5__num {
+  font-size: 0.833vw;    /* 12/1440 */
+  line-height: 1.528vw;
+  color: #525252;
+  font-weight: 400;
+}
+
+.bbm-b5__num--dark  { color: #525252; }
+
+/* ── Labels ── */
+.bbm-b5__label {
+  font-weight: 300;
+  font-size: 1.181vw;    /* 17/1440 */
+  line-height: 1.389vw;  /* 20/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.bbm-b5__label--dark { color: #fff; }
+
+/* ── Card positions ── */
+/* Col1: left=480/1440=33.333vw */
+.bbm-b5__card--c1r1 { left: 33.333vw; top: 17.639vw; } /* 480, 254 */
+.bbm-b5__card--c1r2 { left: 33.333vw; top: 27.569vw; } /* 480, 397 */
+
+/* Col2: left=759/1440=52.708vw — shifted UP */
+.bbm-b5__card--c2r1 { left: 52.708vw; top: 15.000vw; } /* 759, 216 */
+.bbm-b5__card--c2r2 { left: 52.708vw; top: 24.931vw; } /* 759, 359 */
+
+/* Col3: left=1037/1440=71.944vw */
+.bbm-b5__card--c3r1 { left: 71.944vw; top: 17.639vw; } /* 1037, 254 */
+.bbm-b5__card--c3r2 { left: 71.944vw; top: 27.569vw; } /* 1037, 397 */

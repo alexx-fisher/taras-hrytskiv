@@ -1,0 +1,121 @@
+/* ═══ FOOTER ═══ */
+.ft {
+  position: relative;
+  width: 100vw;
+  height: 24.653vw;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+.ft__panel {
+  position: absolute;
+  left: 0;
+  top: 4.167vw;
+  width: 100%;
+  height: 20.486vw;
+  background: #111;
+}
+
+.ft__logo {
+  position: absolute;
+  left: 9.583vw;
+  top: 6.597vw;
+  width: 2.222vw;
+  height: 2.222vw;
+  display: block;
+}
+
+.ft__social {
+  position: absolute;
+  left: 9.375vw;
+  font-weight: 300;
+  font-size: 0.972vw;
+  line-height: 1.389vw;
+  color: #cfcfcf;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  display: block;
+  transition: color 0.25s ease;
+}
+
+.ft__social:hover { color: #fff; }
+.ft__social-instagram { top: 16.181vw; }
+.ft__social-youtube   { top: 18.611vw; }
+.ft__social-tiktok    { top: 20.694vw; }
+
+.ft__col-title {
+  position: absolute;
+  top: 7.014vw;
+  font-weight: 300;
+  font-size: 1.111vw;
+  line-height: 1.389vw;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.ft__col-title-nav     { left: 37.569vw; }
+.ft__col-title-contact { left: 54.514vw; }
+.ft__col-title-talk    { left: 73.264vw; }
+
+.ft__nav {
+  position: absolute;
+  left: 37.569vw;
+  top: 9.931vw;
+  font-weight: 300;
+  font-size: 0.903vw;
+  line-height: 2.083vw;
+  color: #cfcfcf;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  flex-direction: column;
+}
+
+.ft__nav a { color: #cfcfcf; text-decoration: none; transition: color 0.25s ease; }
+.ft__nav a:hover { color: #fff; }
+
+.ft__contact {
+  position: absolute;
+  left: 54.514vw;
+  top: 9.931vw;
+  font-weight: 300;
+  font-size: 0.903vw;
+  line-height: 2.083vw;
+  color: #cfcfcf;
+  display: flex;
+  flex-direction: column;
+}
+
+.ft__contact a { color: #cfcfcf; text-decoration: none; transition: color 0.25s ease; }
+.ft__contact a:hover { color: #fff; }
+
+.ft__talk-btn {
+  position: absolute;
+  left: 73.264vw;
+  top: 9.653vw;
+  width: 2.778vw;
+  height: 2.778vw;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.ft__talk-btn:hover { transform: rotate(45deg); }
+.ft__talk-btn img { width: 100%; height: 100%; display: block; }
+
+.ft__legal {
+  position: absolute;
+  top: 21.042vw;
+  font-weight: 300;
+  font-size: 0.972vw;
+  line-height: 1.389vw;
+  color: #cfcfcf;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.25s ease;
+}
+
+.ft__legal:hover { color: #fff; }
+.ft__legal-privacy { left: 73.264vw; }
+.ft__legal-terms   { left: 84.931vw; }

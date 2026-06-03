@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading — Taras Hrytskiv</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0c0c0c;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #loader {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loader-words {
+      position: absolute;
+      top: 13.1vh;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4.167vw;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.25vw;
+      white-space: nowrap;
+    }
+
+    .loader-words span {
+      color: #262626;
+      transition: color 0.4s ease;
+    }
+
+    .loader-words span.lit {
+      color: #ffffff;
+    }
+
+    .loader-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-ring {
+      position: relative;
+      width: 7.057vw;
+      height: 7.057vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-ring svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    #ringTrack {
+      stroke: #1e1e1e;
+    }
+
+    #ringArc {
+      stroke: #777165;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 282.74;
+      stroke-dashoffset: 282.74;
+    }
+
+    .loader-counter {
+      position: relative;
+      z-index: 1;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 100;
+      font-size: 1.736vw;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+
+  <div class="loader-words">
+    <span>service.</span>
+    <span>brand.</span>
+    <span>growth.</span>
+  </div>
+
+  <div class="loader-center">
+    <div class="loader-ring">
+      <svg viewBox="0 0 100 100">
+        <circle id="ringTrack" cx="50" cy="50" r="45" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+        <circle id="ringArc"   cx="50" cy="50" r="45" stroke-width="1.5"/>
+      </svg>
+      <span class="loader-counter" id="counterNum">0%</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const params   = new URLSearchParams(location.search);
+  const DURATION = params.has('preview') ? 99999 : 3000;
+  const REDIRECT = params.has('preview') ? null : 'index.html';
+  const C        = 2 * Math.PI * 45; // 282.74
+
+  const arc   = document.getElementById('ringArc');
+  const num   = document.getElementById('counterNum');
+  const root  = document.getElementById('loader');
+  const words = document.querySelectorAll('.loader-words span');
+  // thresholds: service. at 20%, brand. at 50%, growth. at 80%
+  const WORD_THRESHOLDS = [0.1, 0.4, 0.7];
+
+  arc.style.strokeDasharray  = C;
+  arc.style.strokeDashoffset = C;
+
+  let start = null, litWords = 0;
+
+  function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function tick(ts) {
+    if (!start) start = ts;
+    const raw   = Math.min((ts - start) / DURATION, 1);
+    const eased = ease(raw);
+    const pct   = Math.floor(eased * 100);
+
+    num.textContent = pct + '%';
+    arc.style.strokeDashoffset = C - eased * C;
+
+    while (litWords < words.length && eased >= WORD_THRESHOLDS[litWords]) {
+      words[litWords].classList.add('lit');
+      litWords++;
+    }
+
+    if (raw < 1) { requestAnimationFrame(tick); return; }
+
+    num.textContent = '100%';
+    arc.style.strokeDashoffset = 0;
+    words.forEach(w => w.classList.add('lit'));
+
+    if (REDIRECT) {
+      setTimeout(() => {
+        root.style.transition = 'opacity 0.7s ease';
+        root.style.opacity    = '0';
+        setTimeout(() => { window.location.href = REDIRECT; }, 700);
+      }, 800);
+    }
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>

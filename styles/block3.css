@@ -1,0 +1,206 @@
+/* Block 3 — Barber Brand Mentorship
+   Reference: 1440×590px
+   120px gap above (margin-top) */
+
+.block3 {
+  margin-top: 60px;
+  position: relative;
+  width: 100vw;
+  height: 40.972vw; /* 590/1440 */
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+/* ─── Heading: x=135 y=60 w=458 font-size=55 Thin ─── */
+.block3__heading {
+  position: absolute;
+  left: 9.375vw;    /* 135/1440 */
+  top: 4.167vw;     /* 60/1440 */
+  width: 31.806vw;  /* 458/1440 */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 3.819vw; /* 55/1440 */
+  line-height: 3.819vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* ─── Subtitle: x=235 y=239 w=293 ─── */
+.block3__subtitle {
+  position: absolute;
+  left: 16.319vw;   /* 235/1440 */
+  top: 16.597vw;    /* 239/1440 */
+  width: 20.347vw;  /* 293/1440 */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.597vw; /* 23/1440 */
+  line-height: 1.875vw; /* 27/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.block3__subtitle .accent {
+  color: #777165;
+}
+
+/* ─── Decorative line: x=258 y=354 w=23 ─── */
+.block3__line-decor {
+  position: absolute;
+  left: 16.319vw;   /* 235/1440 — aligned with desc */
+  top: 24.583vw;    /* 354/1440 */
+  width: 1.597vw;   /* 23/1440 */
+  height: 1px;
+  background: #fff;
+}
+
+/* ─── Description: x=268 y=345 w=227 ─── */
+.block3__desc {
+  position: absolute;
+  left: 18.611vw;   /* 268/1440 */
+  top: 23.958vw;    /* 345/1440 */
+  width: 15.764vw;  /* 227/1440 */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.042vw; /* 15/1440 */
+  line-height: 1.319vw; /* 19/1440 */
+  color: #fff;
+}
+
+/* ─── Button: x=235 y=469 w=270 h=60 ─── */
+.block3__btn {
+  position: absolute;
+  left: 16.319vw;   /* 235/1440 */
+  top: 32.569vw;    /* 469/1440 */
+  width: 18.75vw;   /* 270/1440 */
+  height: 4.167vw;  /* 60/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 2vw;
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.block3__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.block3__btn:hover { border-color: #a09a8e; }
+.block3__btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+.block3__btn:hover span { color: #fff; }
+.block3__btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+.block3__btn span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.972vw; /* 14/1440 */
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.102vw; /* 1.47/1440 */
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.block3__btn:hover span { color: #fff; }
+
+.block3__btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s ease, filter 0.4s ease;
+}
+
+.block3__btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+/* ─── Mockup image: bottom aligned to button bottom (529px from top = 61px from block bottom) ─── */
+.block3__mockup {
+  position: absolute;
+  left: 39.931vw;   /* 575/1440 */
+  bottom: 4.236vw;  /* 61/1440 — aligns bottom with MORE DETAILS button */
+  width: 35.208vw;  /* 507/1440 */
+  height: auto;
+}
+
+/* ─── Right labels: Service / Brand / Growth ─── */
+.block3__labels {
+  position: absolute;
+  left: 78.611vw;   /* 1132/1440 */
+  top: 16.389vw;    /* 236/1440 */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.block3__labels p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.25vw;
+  line-height: 1.528vw;
+  margin-bottom: 1.111vw;
+}
+
+/* ── Cycling highlight animation ── */
+@keyframes labelHighlight {
+  0%, 28%, 100% { color: #262626; }
+  5%, 23%       { color: #ffffff; }
+}
+
+.label-cycle { color: #262626; }
+.label-1 { animation: labelHighlight 3s ease-in-out infinite; animation-delay: 0s; }
+.label-2 { animation: labelHighlight 3s ease-in-out infinite; animation-delay: 1s; }
+.label-3 { animation: labelHighlight 3s ease-in-out infinite; animation-delay: 2s; }
+
+/* ── Scroll-triggered entrance animations ── */
+.block3__heading,
+.block3__subtitle,
+.block3__line-decor,
+.block3__desc,
+.block3__btn,
+.block3__labels,
+.block3__mockup {
+  opacity: 0;
+}
+
+.block3__heading.anim-in {
+  animation: aboutSlideLeft 0.7s ease forwards;
+}
+
+.block3__subtitle.anim-in,
+.block3__line-decor.anim-in,
+.block3__desc.anim-in,
+.block3__btn.anim-in,
+.block3__labels.anim-in,
+.block3__mockup.anim-in {
+  animation: aboutRiseUp 0.7s ease forwards;
+}
+
+.block3__heading.anim-done,
+.block3__subtitle.anim-done,
+.block3__line-decor.anim-done,
+.block3__desc.anim-done,
+.block3__btn.anim-done { opacity: 1; }
+
+/* labels: anim-done keeps cycling color but stays visible */
+.block3__labels.anim-done { opacity: 1; }

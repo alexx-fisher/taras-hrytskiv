@@ -1,0 +1,134 @@
+/* ═══ BLOCK 5 — The Method ═══ */
+.b5 {
+  position: relative;
+  width: 100vw;
+  height: 36.736vw;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+.b5__heading {
+  position: absolute;
+  left: 9.375vw;
+  top: 4.167vw;
+  width: 32.014vw;
+  font-weight: 100;
+  font-size: 3.819vw;
+  line-height: 3.819vw;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.b5__subtitle {
+  position: absolute;
+  left: 9.375vw;
+  top: 23.403vw;
+  width: 29.097vw;
+  font-weight: 300;
+  font-size: 1.736vw;
+  line-height: 2.083vw;
+  text-transform: uppercase;
+}
+
+.b5__subtitle .muted  { color: #777165; }
+.b5__subtitle .bright { color: #fff; }
+
+/* ── Button ── */
+.b5__btn {
+  position: absolute;
+  left: 71.875vw;
+  top: 29.306vw;
+  width: 18.75vw;
+  height: 4.167vw;
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 2vw;
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.b5__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.b5__btn:hover { border-color: #a09a8e; }
+.b5__btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.b5__btn span {
+  font-weight: 300;
+  font-size: 0.972vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.102vw;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.b5__btn:hover span { color: #fff; }
+
+.b5__btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s ease, filter 0.4s ease;
+}
+
+.b5__btn:hover .arrow { transform: rotate(-90deg); filter: brightness(10); }
+
+/* ── Image ── */
+.b5__img-wrap {
+  position: absolute;
+  left: 33.958vw;
+  top: 2.847vw;
+  width: 45.185vw;
+  height: 33.889vw;
+  overflow: hidden;
+  clip-path: inset(1.319vw 10.741vw 3.264vw 8.611vw);
+  cursor: pointer;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.b5__img-wrap:hover { transform: scale(1.06); }
+
+.b5__img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  pointer-events: none;
+}
+
+/* ── Entrance animations ── */
+@keyframes b5SlideLeft  { from { opacity: 0; transform: translateX(-32px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes b5SlideRight { from { opacity: 0; transform: translateX(32px);  } to { opacity: 1; transform: translateX(0); } }
+
+.b5__h-line   { display: block; opacity: 0; }
+.b5__subtitle { opacity: 0; }
+.b5__img-wrap { opacity: 0; }
+.b5__btn      { opacity: 0; }
+
+.b5__h-line.anim-in, .b5__subtitle.anim-in { animation: b5SlideLeft  0.7s ease forwards; }
+.b5__img-wrap.anim-in, .b5__btn.anim-in    { animation: b5SlideRight 0.7s ease forwards; }
+
+.b5__h-line.anim-done, .b5__subtitle.anim-done,
+.b5__img-wrap.anim-done, .b5__btn.anim-done { opacity: 1; }

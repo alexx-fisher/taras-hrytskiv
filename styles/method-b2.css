@@ -1,0 +1,142 @@
+/* ═══ METHOD BLOCK 2 ═══
+   Reference: 1440px base  */
+
+/* ── Entrance animations ── */
+@keyframes mb2FadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mb2SlideFromLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes mb2SlideFromRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Lines start hidden */
+.mb2-line {
+  display: block;
+  opacity: 0;
+}
+
+.mb2-line.anim-in.mb2-line--left  { animation: mb2SlideFromLeft  0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.mb2-line.anim-in.mb2-line--right { animation: mb2SlideFromRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.mb2-line.anim-done { opacity: 1; }
+
+/* Card-deal: badge-1 (trending, right) — deals from bottom-right → rotates to +16deg */
+@keyframes mb2CardDealRight {
+  0%   { opacity: 0; transform: translateX(2vw) translateY(1.2vw) scale(0.82) rotate(38deg); }
+  55%  { opacity: 1; transform: translateX(-0.3vw) translateY(-0.2vw) scale(1.05) rotate(12deg); }
+  75%  { transform: translateX(0.1vw) translateY(0.05vw) scale(0.98) rotate(18deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(16deg); }
+}
+
+/* Card-deal: badge-2 (dollar, left) — deals from bottom-left → rotates to -17deg */
+@keyframes mb2CardDealLeft {
+  0%   { opacity: 0; transform: translateX(-2vw) translateY(1.2vw) scale(0.82) rotate(-38deg); }
+  55%  { opacity: 1; transform: translateX(0.3vw) translateY(-0.2vw) scale(1.05) rotate(-12deg); }
+  75%  { transform: translateX(-0.1vw) translateY(0.05vw) scale(0.98) rotate(-19deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(-17deg); }
+}
+
+/* Badges start hidden */
+.method-b2__badge-1,
+.method-b2__badge-2 { opacity: 0; }
+
+.method-b2__badge-1.anim-in {
+  animation: mb2CardDealRight 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.method-b2__badge-2.anim-in {
+  animation: mb2CardDealLeft 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.method-b2__badge-1.anim-done { opacity: 1; transform: rotate(16deg); }
+.method-b2__badge-2.anim-done { opacity: 1; transform: rotate(-17deg); }
+
+/* ── Section ── */
+.method-b2 {
+  position: relative;
+  width: 100vw;
+  height: 30.556vw;   /* 440/1440 */
+  background: #0c0c0c;
+}
+
+/* ── Paragraph 1 ── */
+/* "This is a PRACTICAL SYSTEM FOR BARBERS who want more than just great cutting skills." */
+.method-b2__para1 {
+  position: absolute;
+  left: 20.556vw;     /* 296/1440 */
+  top: 6.944vw;       /* 100/1440 */
+  width: 37.292vw;    /* 537/1440 */
+  font-weight: 300;
+  font-size: 2.083vw; /* 30/1440 */
+  line-height: 2.431vw; /* 35/1440 */
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ── Paragraph 2 ── */
+/* "IT IS DESIGNED TO HELP BUILD A STABLE CAREER, a strong personal brand, and a professional client experience." */
+.method-b2__para2 {
+  position: absolute;
+  left: 36.181vw;     /* 521/1440 */
+  top: 16.319vw;      /* 235/1440 */
+  width: 43.333vw;    /* 624/1440 */
+  font-weight: 300;
+  font-size: 2.083vw;
+  line-height: 2.431vw;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.method-b2__gold { color: #777165; }
+
+/* ── Frosted glass badge ── */
+.method-b2__badge-1,
+.method-b2__badge-2 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge 1 — trending-up icon, rotated +16deg */
+.method-b2__badge-1 {
+  left: 56.25vw;      /* 810/1440 */
+  top: 7.368vw;       /* 106/1440 */
+  width: 6.955vw;     /* 100/1440 */
+  height: 6.955vw;
+}
+
+/* Badge 2 — dollar icon, rotated -17deg */
+.method-b2__badge-2 {
+  left: 26.539vw;     /* 382/1440 */
+  top: 16.330vw;      /* 235/1440 */
+  width: 7.021vw;     /* 101/1440 */
+  height: 7.021vw;
+}
+
+.method-b2__badge-inner {
+  width: 5.623vw;     /* 81/1440 */
+  height: 5.623vw;
+  border-radius: 1.389vw; /* 20/1440 */
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rotation is now on the container via animation / anim-done */
+
+.method-b2__badge-inner img {
+  width: 2.014vw;     /* 29/1440 */
+  height: 2.014vw;
+  transform: inherit; /* rotates with the card */
+}

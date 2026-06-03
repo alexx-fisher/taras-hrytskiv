@@ -1,0 +1,380 @@
+/* ═══ BBM BLOCK 1 — Barber Brand Mentorship — Hero ═══
+   Reference: 1440 × 670 px
+   Horizontal px → vw: value / 1440 * 100                  */
+
+/* ── Load-in animations ── */
+@keyframes bbmSlideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bbmRiseUp {
+  from { opacity: 0; transform: translateY(80px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bbmScrollPulse {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* Card-deal: flag 1 (UA) — starts center-right, flies left to position */
+@keyframes bbmCardDeal1 {
+  0%   { opacity: 0; transform: translateX(1.8vw) translateY(0.5vw) scale(0.85) rotate(6deg); }
+  55%  { opacity: 1; transform: translateX(-0.3vw) translateY(-0.15vw) scale(1.04) rotate(-2deg); }
+  75%  { transform: translateX(0.1vw) translateY(0.05vw) scale(0.98) rotate(1deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(0deg); }
+}
+
+/* Card-deal: flag 2 (US) — starts center-left, flies right, ends rotated */
+@keyframes bbmCardDeal2 {
+  0%   { opacity: 0; transform: translateX(-1.4vw) translateY(0.8vw) scale(0.85) rotate(2deg); }
+  55%  { opacity: 1; transform: translateX(0.3vw) translateY(-0.2vw) scale(1.04) rotate(12deg); }
+  75%  { transform: translateX(-0.1vw) translateY(0.1vw) scale(0.98) rotate(7deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(8.43deg); }
+}
+
+.bbm-hero__heading,
+.bbm-hero__line-decor,
+.bbm-hero__subtitle,
+.bbm-hero__desc,
+.bbm-hero__more-btn {
+  opacity: 0;
+  animation: bbmSlideLeft 0.7s ease forwards;
+}
+
+.bbm-hero__heading    { animation-delay: 0.1s; }
+.bbm-hero__line-decor { animation-delay: 0.3s; }
+.bbm-hero__subtitle   { animation-delay: 0.35s; }
+.bbm-hero__desc       { animation-delay: 0.5s; }
+.bbm-hero__more-btn   { animation-delay: 0.6s; }
+
+/* Flags — card deal animation */
+.bbm-hero__flag-1 {
+  opacity: 0;
+  animation: bbmCardDeal1 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.45s;
+}
+
+.bbm-hero__flag-2 {
+  opacity: 0;
+  animation: bbmCardDeal2 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.58s;
+}
+
+/* ── Hero section ── */
+.bbm-hero {
+  position: relative;
+  width: 100vw;
+  height: 46.528vw; /* 670/1440 */
+  min-height: 670px;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+/* ── Noise grain overlay ── */
+.bbm-hero__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/rectangle_pattern.png');
+  background-size: 220px 220px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Mask group ── */
+.bbm-hero__mask-group {
+  position: absolute;
+  left: 0;
+  top: 4.861vw;      /* 70/1440 */
+  width: 100vw;
+  height: 41.667vw;  /* 600/1440 */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dark studio background — same technique as main hero */
+.bbm-hero__bg-img {
+  position: absolute;
+  width: 41.667vw;
+  height: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* MacBook mockup — PNG with transparent bg from Photoroom */
+.bbm-hero__macbook {
+  opacity: 0;
+  animation: bbmRiseUp 1s ease forwards;
+  animation-delay: 0s;
+  position: absolute;
+  left: -3.75vw;     /* -54/1440 */
+  top: -8.472vw;     /* (-72-50)/1440 */
+  width: 77.986vw;   /* 1123/1440 */
+  height: auto;
+  z-index: 1;
+}
+
+/* ── Foreground layer ── */
+.bbm-hero__nav,
+.bbm-hero__heading,
+.bbm-hero__line-decor,
+.bbm-hero__subtitle,
+.bbm-hero__flag-1,
+.bbm-hero__flag-2,
+.bbm-hero__desc,
+.bbm-hero__more-btn,
+.bbm-hero__scroll {
+  position: absolute;
+  z-index: 5;
+}
+
+/* ── Navigation ── */
+.bbm-hero__nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.167vw;   /* 60/1440 */
+}
+
+.bbm-hero__logo {
+  position: absolute;
+  left: 9.375vw;     /* 135/1440 */
+  top: 1.319vw;      /* 19/1440 */
+  width: 2.222vw;    /* 32/1440 */
+  height: 2.222vw;
+}
+
+.bbm-hero__nav-links {
+  position: absolute;
+  top: 1.597vw;      /* 23/1440 */
+  left: 30.139vw;    /* 434/1440 */
+  display: flex;
+  gap: 3vw;
+  list-style: none;
+}
+
+.bbm-hero__nav-links li a {
+  font-weight: 300;
+  font-size: 0.903vw; /* 13/1440 */
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.528vw;
+  white-space: nowrap;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.bbm-hero__nav-links li a:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* Active page indicator */
+.bbm-hero__nav-links li a.active {
+  color: #777165;
+}
+
+/* CTA button */
+.bbm-hero__cta-btn {
+  position: absolute;
+  left: 79.375vw;    /* 1143/1440 */
+  top: 0.972vw;      /* 14/1440 */
+  width: 11.25vw;    /* 162/1440 */
+  height: 2.778vw;   /* 40/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.bbm-hero__cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.bbm-hero__cta-btn:hover { border-color: #a09a8e; }
+.bbm-hero__cta-btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.bbm-hero__cta-btn span {
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 0.764vw; /* 11/1440 */
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+}
+
+.bbm-hero__cta-btn:hover span { color: #fff; }
+
+/* ── Main heading ── */
+.bbm-hero__heading {
+  left: 50.625vw;    /* 729/1440 */
+  top: 10.694vw;     /* 154/1440 */
+  width: 54.444vw;   /* 784/1440 */
+  font-weight: 100;
+  font-size: 5.556vw; /* 80/1440 */
+  line-height: 4.861vw; /* 70/1440 */
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.bbm-hero__h-white { color: #fff; }
+.bbm-hero__h-gray  { color: #777165; }
+
+/* ── Decorative horizontal line ── */
+.bbm-hero__line-decor {
+  left: 50.139vw;    /* 722/1440 */
+  top: 24.306vw;     /* 350/1440 */
+  width: 6.944vw;    /* 100/1440 */
+  height: 1px;
+  background: #fff;
+}
+
+/* ── Subtitle ── */
+.bbm-hero__subtitle {
+  left: 58.889vw;    /* 848/1440 */
+  top: 23.194vw;     /* 334/1440 */
+  width: 19.306vw;   /* 278/1440 */
+  font-weight: 300;
+  font-size: 1.736vw; /* 25/1440 */
+  line-height: 1.875vw; /* 27/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Flag badges ── */
+.bbm-hero__flag-1,
+.bbm-hero__flag-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.570vw;    /* 51.4/1440 */
+  height: 2.380vw;   /* 34.27/1440 */
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.625vw; /* 9/1440 */
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  font-size: 1.563vw; /* ~22.5px */
+  line-height: 1;
+}
+
+.bbm-hero__flag-1 {
+  left: 77.431vw;    /* 1115/1440 */
+  top: 24.315vw;     /* 350.14/1440 */
+}
+
+.bbm-hero__flag-2 {
+  left: 79.731vw;    /* 1148/1440 */
+  top: 23.125vw;     /* 333/1440 */
+  transform: rotate(8.43deg);
+}
+
+/* ── Description ── */
+.bbm-hero__desc {
+  left: 58.889vw;    /* 848/1440 */
+  top: 28.75vw;      /* 414/1440 */
+  width: 29.514vw;   /* 425/1440 */
+  font-weight: 300;
+  font-size: 1.111vw; /* 16/1440 */
+  line-height: 1.389vw; /* 20/1440 */
+  color: #fff;
+}
+
+/* ── More Details button ── */
+.bbm-hero__more-btn {
+  left: 58.889vw;    /* 848/1440 */
+  top: 38.125vw;     /* 549/1440 */
+  width: 24.306vw;   /* 350/1440 */
+  height: 4.861vw;   /* 70/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 3.264vw;
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.bbm-hero__more-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.bbm-hero__more-btn:hover { border-color: #a09a8e; }
+.bbm-hero__more-btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.bbm-hero__more-btn span {
+  font-weight: 300;
+  font-size: 1.111vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.117vw;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  transition: color 0.4s ease;
+}
+
+.bbm-hero__more-btn:hover span { color: #fff; }
+
+.bbm-hero__more-btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  transition: transform 0.35s ease, filter 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.bbm-hero__more-btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+/* ── Scroll button ── */
+.bbm-hero__scroll {
+  left: 2.5vw;       /* 36/1440 */
+  top: 37.153vw;     /* 535/1440 */
+  width: 5.139vw;    /* 74/1440 */
+  height: 5.139vw;
+}
+
+.bbm-hero__scroll svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bbm-scroll-arrow {
+  animation: bbmScrollPulse 1.6s ease-in-out infinite;
+  transform-origin: center;
+}

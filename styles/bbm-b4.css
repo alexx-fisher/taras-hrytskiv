@@ -1,0 +1,141 @@
+/* ═══ BBM BLOCK 4 — Who is this for ═══
+   Reference: 1440px base                 */
+
+/* ── Entrance animations ── */
+@keyframes bbmB4SlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bbmB4FadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bbmB4FadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.bbm-b4__heading,
+.bbm-b4__subtitle,
+.bbm-b4__item,
+.bbm-b4__photo-wrap { opacity: 0; }
+
+.bbm-b4__heading.anim-in     { animation: bbmB4SlideLeft 0.7s ease forwards; }
+.bbm-b4__subtitle.anim-in    { animation: bbmB4FadeUp 0.6s ease forwards; }
+.bbm-b4__item.anim-in        { animation: bbmB4FadeUp 0.55s ease forwards; }
+.bbm-b4__photo-wrap.anim-in  { animation: bbmB4FadeIn 0.9s ease forwards; }
+
+.bbm-b4__heading.anim-done,
+.bbm-b4__subtitle.anim-done,
+.bbm-b4__item.anim-done,
+.bbm-b4__photo-wrap.anim-done { opacity: 1; }
+
+/* ── Section ── */
+.bbm-b4 {
+  position: relative;
+  width: 100vw;
+  height: 42.222vw;    /* 608/1440 */
+  background: #0c0c0c;
+}
+
+/* ── Horizontal border lines ── */
+.bbm-b4__hline {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1e1e1e;
+}
+
+.bbm-b4__hline-top    { top: 4.861vw; }  /* 70/1440 */
+.bbm-b4__hline-bottom { top: 35.139vw; } /* 506/1440 */
+
+/* ── Vertical border lines ── */
+.bbm-b4__vline {
+  position: absolute;
+  top: 4.861vw;         /* 70/1440 */
+  width: 1px;
+  height: 29.097vw;     /* 419/1440 */
+  background: #1e1e1e;
+}
+
+.bbm-b4__vline-1 { left: 72.153vw; }  /* 1039/1440 */
+.bbm-b4__vline-2 { left: 90.625vw; }  /* 1305/1440 */
+
+/* ── Heading ── */
+.bbm-b4__heading {
+  position: absolute;
+  left: 9.375vw;        /* 135/1440 */
+  top: 4.167vw;         /* 60/1440 */
+  width: 20.833vw;      /* 300/1440 */
+  font-weight: 100;
+  font-size: 3.819vw;   /* 55/1440 */
+  line-height: 4.167vw; /* 60/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Subtitle ── */
+.bbm-b4__subtitle {
+  position: absolute;
+  left: 29.514vw;       /* 425/1440 */
+  top: 9.167vw;         /* 132/1440 */
+  width: 16.528vw;      /* 238/1440 */
+  font-weight: 300;
+  font-size: 1.181vw;   /* 17/1440 */
+  line-height: 1.528vw; /* 22/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Items ── */
+.bbm-b4__item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1.042vw;         /* ~15px between icon and text */
+}
+
+.bbm-b4__icon {
+  width: 1.389vw;       /* 20/1440 */
+  height: 1.389vw;
+  object-fit: contain;
+}
+
+.bbm-b4__text {
+  font-weight: 300;
+  font-size: 1.181vw;   /* 17/1440 */
+  line-height: 1.528vw; /* 22/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Row 1 */
+.bbm-b4__item--r1c1 { left: 9.375vw;  top: 16.319vw; width: 13.958vw; } /* 135, 235, 201 */
+.bbm-b4__item--r1c2 { left: 29.514vw; top: 16.319vw; width: 13.889vw; } /* 425, 235, 200 */
+.bbm-b4__item--r1c3 { left: 48.681vw; top: 16.597vw; width: 13.611vw; } /* 701, 239, 196 */
+
+/* Row 2 */
+.bbm-b4__item--r2c1 { left: 9.583vw;  top: 25.694vw; width: 17.014vw; } /* 138, 370, 245 */
+.bbm-b4__item--r2c2 { left: 29.653vw; top: 25.694vw; width: 16.181vw; } /* 427, 370, 233 */
+.bbm-b4__item--r2c3 { left: 48.681vw; top: 25.694vw; width: 17.292vw; } /* 701, 370, 249 */
+
+/* ── Barber photo ── */
+.bbm-b4__photo-wrap {
+  position: absolute;
+  left: 72.153vw;       /* 1039/1440 */
+  bottom: 11.042vw;     /* bottom edge = bottom of last text item (row2 col3) */
+  width: 18.472vw;      /* 266/1440 */
+  aspect-ratio: 280 / 341;
+  overflow: hidden;
+}
+
+.bbm-b4__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}

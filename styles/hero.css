@@ -1,0 +1,538 @@
+/* Hero — exact Figma values: 1440×670px reference
+   Horizontal px → vw: value / 1440 * 100 */
+
+/* ── Load-in animation ── */
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* All hero elements start paused — loader releases them via body.loaded */
+.hero__heading .name-first,
+.hero__heading .name-last,
+.hero__subtitle,
+.hero__line-decor,
+.hero__desc,
+.hero__more-btn {
+  opacity: 0;
+  animation: fadeSlideLeft 0.7s ease forwards paused;
+}
+
+.hero__heading .name-first { animation-delay: 0s; }
+.hero__heading .name-last  { animation-delay: 0.2s; }
+.hero__subtitle            { animation-delay: 0.4s; }
+.hero__line-decor          { animation-delay: 0.55s; }
+.hero__desc                { animation-delay: 0.55s; }
+.hero__more-btn            { animation-delay: 0.6s; }
+
+/* right-to-left chain */
+.hero__screen2,
+.hero__insta-card,
+.hero__socials {
+  opacity: 0;
+  animation: fadeSlideRight 0.7s ease forwards paused;
+}
+
+.hero__screen2    { animation-delay: 0.1s; }
+.hero__insta-card { animation-delay: 0.3s; }
+.hero__socials    { animation-delay: 0.5s; }
+
+/* portrait — bottom to top */
+.hero__portrait {
+  opacity: 0;
+  animation: fadeSlideUp 0.9s ease forwards paused;
+  animation-delay: 0.2s;
+}
+
+/* Loader done → run all hero animations */
+body.loaded .hero__heading .name-first,
+body.loaded .hero__heading .name-last,
+body.loaded .hero__subtitle,
+body.loaded .hero__line-decor,
+body.loaded .hero__desc,
+body.loaded .hero__more-btn,
+body.loaded .hero__screen2,
+body.loaded .hero__insta-card,
+body.loaded .hero__socials,
+body.loaded .hero__portrait {
+  animation-play-state: running;
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 46.528vw; /* 670/1440 = 0.46528 → scales with viewport */
+  min-height: 670px;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+/* Noise grain overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/rectangle_pattern.png');
+  background-size: 220px 220px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ─── Mask group: Figma x=0 y=70 w=1440 h=600 ─── */
+/* Black bar above (y=0..70) is just the hero background #0c0c0c */
+.hero__mask-group {
+  position: absolute;
+  left: 0;
+  top: 4.861vw;     /* 70/1440 */
+  width: 100vw;
+  height: 41.667vw; /* 600/1440 */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layer 0 — dark studio bg fills the mask group entirely */
+.hero__bg-img {
+  position: absolute;
+  /* element 600×1440 → rotated -90° → visually 1440×600 */
+  width: 41.667vw;   /* 600/1440 = mask group height */
+  height: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Layer 1 — Instagram screenshot
+   Hero-frame coords: x=1035 y=136 w=286 h=287
+   Relative to mask group top (y=70): top = 136-70 = 66px */
+.hero__screen2 {
+  position: absolute;
+  left: 71.875vw;   /* 1035/1440 */
+  top: 4.583vw;     /* 66/1440 */
+  width: 19.861vw;  /* 286/1440 */
+  height: auto;
+  object-fit: contain;
+  opacity: 0.55;
+  border-radius: 0.833vw; /* subtle rounding matching phone screen */
+  z-index: 3;             /* above portrait so it's visible */
+}
+
+/* Layer 2 — Portrait
+   Hero-frame coords: x=609 y=86 w=631
+   Relative to mask group top (y=70): top = 86-70 = 16px */
+.hero__portrait {
+  position: absolute;
+  left: 42.292vw;   /* 609/1440 */
+  top: 1.111vw;     /* 16/1440 */
+  width: 43.819vw;  /* 631/1440 */
+  height: auto;
+  display: block;
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 68%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 68%, transparent 100%);
+}
+
+/* ─── Foreground content ─── */
+.hero__nav,
+.hero__label-vertical,
+.hero__heading,
+.hero__subtitle,
+.hero__line-decor,
+.hero__desc,
+.hero__more-btn,
+.hero__scroll,
+.hero__insta-card,
+.hero__socials {
+  position: absolute;
+  z-index: 5;
+}
+
+/* ─── Navigation ─── */
+/* Group 47313: y=14; logo x=135 y=19; btn x=1143 y=14 w=162 h=40 */
+.hero__nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.167vw;  /* 60/1440 */
+}
+
+.hero__logo {
+  position: absolute;
+  left: 9.375vw;    /* 135/1440 */
+  top: 1.319vw;     /* 19/1440 */
+  width: 2.222vw;   /* 32/1440 */
+  height: 2.222vw;
+}
+
+/* Nav links: about x=434 mentorship x=528 works x=660 method x=756 media x=859 contact x=947 — all y=23 */
+.hero__nav-links {
+  position: absolute;
+  top: 1.597vw;     /* 23/1440 */
+  left: 30.139vw;   /* 434/1440 */
+  display: flex;
+  gap: 3vw;
+  list-style: none;
+}
+
+.hero__nav-links li a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.903vw; /* 13/1440 */
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.528vw; /* 22/1440 */
+  white-space: nowrap;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.hero__nav-links li a.active { color: #777165; }
+
+.hero__nav-links li a:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* CTA button: x=1143 y=14 w=162 h=40 */
+.hero__cta-btn {
+  position: absolute;
+  left: 79.375vw;   /* 1143/1440 */
+  top: 0.972vw;     /* 14/1440 */
+  width: 11.25vw;   /* 162/1440 */
+  height: 2.778vw;  /* 40/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.hero__cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.hero__cta-btn:hover {
+  border-color: #a09a8e;
+}
+
+.hero__cta-btn:hover::after {
+  clip-path: inset(0 0% 0 0 round 10.417vw);
+}
+
+.hero__cta-btn span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.hero__cta-btn:hover span {
+  color: #fff;
+}
+
+.hero__cta-btn span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.764vw; /* 11/1440 */
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ─── Vertical rotated label: x=63 y=451 w=27 h=295 ─── */
+.hero__label-vertical {
+  left: 4.375vw;    /* 63/1440 */
+  top: 10.903vw;    /* 157/1440 — visual centre of 295px span */
+  width: 1.875vw;   /* 27/1440 */
+  height: 20.486vw; /* 295/1440 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__label-vertical span {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.903vw; /* 13/1440 */
+  color: #474747;
+  text-transform: uppercase;
+  letter-spacing: 0.632vw; /* 9.1/1440 */
+}
+
+/* ─── Main heading: x=155 y=140 ─── */
+.hero__heading {
+  left: 10.764vw;   /* 155/1440 */
+  top: 9.722vw;     /* 140/1440 */
+  line-height: 6.25vw; /* 90/1440 */
+  text-transform: uppercase;
+}
+
+.hero__heading .name-first {
+  display: block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 6.944vw; /* 100/1440 */
+  color: #fff;
+  letter-spacing: 0.139vw; /* 2/1440 */
+}
+
+.hero__heading .name-last {
+  display: block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 6.944vw;
+  color: #777165;
+  letter-spacing: 0.139vw;
+}
+
+/* ─── Subtitle: x=159 y=333/334 ─── */
+.hero__subtitle {
+  left: 11.042vw;   /* 159/1440 */
+  top: 23.125vw;    /* 333/1440 */
+  display: flex;
+  align-items: center;
+  gap: 0.903vw;     /* 13/1440 */
+}
+
+.hero__subtitle span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.389vw; /* 20/1440 */
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.875vw; /* 27/1440 */
+}
+
+.hero__subtitle .dot {
+  width: 0.417vw;   /* 6/1440 */
+  height: 0.417vw;
+}
+
+/* ─── Decorative line: starts x=159 ends x=220, y=426 w=61 ─── */
+.hero__line-decor {
+  left: 11.042vw;   /* 159/1440 */
+  top: 29.583vw;    /* 426/1440 */
+  width: 4.236vw;   /* 61/1440 */
+  height: 1px;
+  background: #fff;
+}
+
+/* ─── Description: x=233 y=415 w=372 ─── */
+.hero__desc {
+  left: 16.181vw;   /* 233/1440 */
+  top: 28.819vw;    /* 415/1440 */
+  width: 25.833vw;  /* 372/1440 */
+}
+
+.hero__desc p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.111vw; /* 16/1440 */
+  color: #fff;
+  line-height: 1.389vw; /* 20/1440 */
+}
+
+/* ─── Gradient shimmer keyframes ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── More Details button: x=233 y=535 w=350 h=70 ─── */
+.hero__more-btn {
+  left: 16.181vw;       /* 233/1440 */
+  top: 37.153vw;        /* 535/1440 */
+  width: 24.306vw;      /* 350/1440 */
+  height: 4.861vw;      /* 70/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 3.264vw;   /* ~47px — arrow offset from right edge (Figma) */
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  position: absolute;
+  transition: border-color 0.5s ease;
+}
+
+/* silver gradient layer — clips from right, reveals left→right on hover */
+.hero__more-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.hero__more-btn:hover {
+  border-color: #a09a8e;
+}
+
+.hero__more-btn:hover::after {
+  clip-path: inset(0 0% 0 0 round 10.417vw);
+}
+
+.hero__more-btn span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.111vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.117vw;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  transition: color 0.4s ease;
+}
+
+.hero__more-btn:hover span {
+  color: #fff;
+}
+
+.hero__more-btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  transition: transform 0.35s ease, filter 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__more-btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+/* ─── Scroll button: x=36 y=535 w=74 h=74 ─── */
+.hero__scroll {
+  left: 2.5vw;      /* 36/1440 */
+  top: 37.153vw;    /* 535/1440 */
+  width: 5.139vw;   /* 74/1440 */
+  height: 5.139vw;
+}
+
+.hero__scroll svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__scroll .scroll-arrow {
+  animation: scrollPulse 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ─── Instagram card: x=1049/1081 y=402/427 ─── */
+.hero__insta-card {
+  left: 72.847vw;   /* 1049/1440 */
+  top: 27.917vw;    /* 402/1440 */
+  display: flex;
+  flex-direction: column;
+  z-index: 6;
+}
+
+.hero__insta-name {
+  font-family: 'Playball', cursive;
+  font-size: 1.736vw; /* 25/1440 */
+  color: #777165;
+  line-height: 1.528vw; /* 22/1440 */
+  margin-bottom: 0.556vw; /* 8/1440 */
+  margin-left: 3.194vw;  /* 46/1440 → shift right from line */
+}
+
+.hero__insta-label {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.694vw; /* 10/1440 */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.528vw;
+  text-align: right;
+  width: 11.319vw;  /* 163/1440 */
+}
+
+.hero__insta-line {
+  position: absolute;
+  left: 0;
+  top: 0.833vw;     /* 12/1440 */
+  width: 1.528vw;   /* 22/1440 */
+  height: 1px;
+  background: #777165;
+}
+
+/* ─── Social icons: x=1264 y=367/404/448 ─── */
+.hero__socials {
+  left: 87.778vw;   /* 1264/1440 */
+  top: 25.486vw;    /* 367/1440 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+}
+
+.hero__socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.hero__socials a:hover {
+  transform: translateY(-3px) scale(1.12);
+}
+.hero__socials img { display: block; }
+
+/* instagram y=367 h=25; youtube y=404 gap=404-367-25=12; tiktok y=448 gap=448-404-30=14 */
+.hero__socials .icon-instagram {
+  width: 1.736vw;   /* 25/1440 */
+  height: 1.736vw;
+  margin-bottom: 0.833vw; /* 12/1440 */
+}
+
+.hero__socials .icon-youtube {
+  width: 2.083vw;   /* 30/1440 */
+  height: 2.083vw;
+  margin-bottom: 0.972vw; /* 14/1440 */
+}
+
+.hero__socials .icon-tiktok {
+  width: 2.083vw;
+  height: 2.083vw;
+}

@@ -1,0 +1,100 @@
+/* ═══ BBM BLOCK 3 — What the program includes ═══
+   Reference: 1440px base                           */
+
+/* ── Entrance animations ── */
+@keyframes bbmB3SlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bbmB3FadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bbmB3SlideRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bbm-b3__heading,
+.bbm-b3__note,
+.bbm-b3__item { opacity: 0; }
+
+.bbm-b3__heading.anim-in { animation: bbmB3SlideLeft 0.7s ease forwards; }
+.bbm-b3__note.anim-in    { animation: bbmB3FadeUp 0.6s ease forwards; }
+.bbm-b3__item.anim-in    { animation: bbmB3SlideRight 0.55s ease forwards; }
+
+.bbm-b3__heading.anim-done,
+.bbm-b3__note.anim-done,
+.bbm-b3__item.anim-done  { opacity: 1; }
+
+/* ── Section ── */
+.bbm-b3 {
+  position: relative;
+  width: 100vw;
+  height: 48.472vw;   /* 698/1440 */
+  background: #0c0c0c;
+}
+
+/* ── Left: heading ── */
+.bbm-b3__heading {
+  position: absolute;
+  left: 9.375vw;      /* 135/1440 */
+  top: 4.167vw;       /* 60/1440 */
+  width: 36.597vw;    /* 527/1440 */
+  font-weight: 100;
+  font-size: 3.819vw; /* 55/1440 */
+  line-height: 4.167vw; /* 60/1440 */
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Left: italic note ── */
+.bbm-b3__note {
+  position: absolute;
+  left: 9.444vw;      /* 136/1440 */
+  top: 35.208vw;      /* 507/1440 */
+  width: 24.583vw;    /* 354/1440 */
+  font-weight: 300;
+  font-size: 1.042vw; /* 15/1440 */
+  line-height: 1.528vw; /* 22/1440 */
+  color: #525252;
+}
+
+/* ── Right: numbered list ── */
+.bbm-b3__list {
+  position: absolute;
+  left: 64.583vw;     /* 930/1440 */
+  top: 4.167vw;       /* 60/1440 */
+  width: 26.042vw;    /* 375/1440 */
+  list-style: none;
+}
+
+.bbm-b3__item {
+  display: flex;
+  align-items: center;
+  height: 4.306vw;    /* 62/1440 */
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.bbm-b3__item--last {
+  border-bottom: none;
+}
+
+.bbm-b3__num {
+  flex-shrink: 0;
+  width: 4.514vw;     /* 65/1440 — gap between 930 and 995 */
+  font-weight: 300;
+  font-size: 1.042vw; /* 15/1440 */
+  line-height: 1.528vw;
+  color: #525252;
+}
+
+.bbm-b3__label {
+  font-weight: 300;
+  font-size: 1.181vw; /* 17/1440 */
+  line-height: 1.528vw;
+  color: #fff;
+  text-transform: uppercase;
+}

@@ -1,0 +1,173 @@
+/* ═══ BLOCK 6 — Press & Publications ═══ */
+.b6 {
+  position: relative;
+  width: 100vw;
+  height: 32.5vw;
+  background: #0c0c0c;
+  overflow: visible;
+}
+
+.b6__heading {
+  position: absolute;
+  left: 9.375vw;
+  top: 4.167vw;
+  width: 32.014vw;
+  font-weight: 100;
+  font-size: 3.819vw;
+  line-height: 3.819vw;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.b6__desc {
+  position: absolute;
+  left: 16.181vw;
+  top: 14.097vw;
+  width: 18.472vw;
+  font-weight: 300;
+  font-size: 1.042vw;
+  line-height: 1.319vw;
+  color: #fff;
+}
+
+/* ── Nav arrows ── */
+.b6__nav {
+  position: absolute;
+  left: 9.583vw;
+  top: 26.667vw;
+  display: flex;
+  gap: 0.417vw;
+}
+
+.b6__nav-btn {
+  width: 3.472vw;
+  height: 3.472vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.b6__nav-btn:hover { transform: scale(1.12); }
+
+.b6__nav-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: filter 0.25s ease;
+}
+
+.b6__nav-btn:hover img { filter: brightness(0) invert(1); }
+.b6__nav-btn--left img { transform: rotate(180deg); }
+
+/* ── View more ── */
+.b6__view-more {
+  position: absolute;
+  left: 18.75vw;
+  top: 27.778vw;
+  font-weight: 300;
+  font-size: 1.111vw;
+  line-height: 1.111vw;
+  color: #686868;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.b6__view-more span {
+  display: inline-block;
+  width: 14.5vw;
+}
+
+/* ── Magazine wrappers ── */
+.b6__mag-wrap {
+  position: absolute;
+  top: 4.167vw;
+  width: 15.972vw;
+  height: 22.639vw;
+  cursor: pointer;
+  transition: transform 0.45s ease, filter 0.45s ease;
+  will-change: transform;
+}
+
+.b6__mag-wrap:hover {
+  transform: perspective(700px) rotateY(-12deg) rotateX(4deg) scale(1.03);
+  filter: drop-shadow(12px 24px 40px rgba(0,0,0,0.7));
+}
+
+.b6__mag-wrap-1 { left: 40.625vw; }
+.b6__mag-wrap-2 { left: 57.639vw; }
+.b6__mag-wrap-3 { left: 74.653vw; }
+
+.b6__mag {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.b6__mag img {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.b6__mag-1 img { width: 34.028vw; height: 48.125vw; left: -0.486vw; top: -0.833vw; }
+.b6__mag-2 img { width: 34.028vw; height: 48.125vw; left: -17.222vw; top: -0.833vw; }
+.b6__mag-3 img { width: 100%; height: 100%; left: 0; top: 0; object-fit: cover; }
+
+/* ── READ MORE links ── */
+.b6__read {
+  position: absolute;
+  top: 27.917vw;
+  display: flex;
+  align-items: center;
+  gap: 0.556vw;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 0.972vw;
+  line-height: 1.111vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.b6__read img {
+  width: 0.729vw;
+  height: 0.511vw;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.b6__read:hover img { transform: rotate(-45deg); }
+
+.b6__read-1 { left: 40.625vw; }
+.b6__read-2 { left: 57.639vw; }
+.b6__read-3 { left: 74.653vw; }
+
+.b6__read span { position: relative; padding-bottom: 0.1vw; }
+.b6__read span::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: #fff;
+  transition: width 0.25s ease;
+}
+.b6__read:hover span::after { width: 100%; }
+
+/* ── Entrance animations ── */
+@keyframes b6SlideLeft  { from { opacity: 0; transform: translateX(-32px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes b6SlideRight { from { opacity: 0; transform: translateX(32px);  } to { opacity: 1; transform: translateX(0); } }
+
+.b6__heading, .b6__desc, .b6__nav, .b6__view-more,
+.b6__mag-wrap, .b6__read { opacity: 0; }
+
+.b6__heading.anim-in, .b6__desc.anim-in,
+.b6__nav.anim-in, .b6__view-more.anim-in { animation: b6SlideLeft  0.7s ease forwards; }
+
+.b6__mag-wrap.anim-in, .b6__read.anim-in { animation: b6SlideRight 0.7s ease forwards; }
+
+.b6__heading.anim-done, .b6__desc.anim-done, .b6__nav.anim-done,
+.b6__view-more.anim-done, .b6__mag-wrap.anim-done, .b6__read.anim-done { opacity: 1; }

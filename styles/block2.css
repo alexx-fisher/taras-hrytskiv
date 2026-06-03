@@ -1,0 +1,228 @@
+/* Block 2 — About Me */
+
+/* ── After animation: visible, hover works ── */
+.anim-done {
+  opacity: 1 !important;
+}
+
+/* ── Scroll-triggered base state (invisible before animation) ── */
+.about__title,
+.about__intro,
+.about__story,
+.about__photo-main,
+.about__photo-small-tr,
+.about__photo-small-bl,
+.about__col-right-1,
+.about__col-right-2,
+.about__method,
+.about__belief {
+  opacity: 0;
+}
+
+/* Title: slides from left */
+.about__title.anim-in {
+  animation: aboutSlideLeft 0.7s ease forwards;
+}
+
+/* Everything else: rises from bottom in chain */
+.about__intro.anim-in,
+.about__story.anim-in,
+.about__photo-main.anim-in,
+.about__photo-small-tr.anim-in,
+.about__photo-small-bl.anim-in,
+.about__col-right-1.anim-in,
+.about__col-right-2.anim-in,
+.about__method.anim-in,
+.about__belief.anim-in {
+  animation: aboutRiseUp 0.7s ease forwards;
+}
+
+@keyframes aboutSlideLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes aboutRiseUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Photo hover — scale with custom cubic-bezier ── */
+
+.about {
+  position: relative;
+  width: 100vw;
+  padding-top: 120px;
+  padding-bottom: 0;
+  background: #0c0c0c;
+}
+
+.about__light-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about__light-wrap img { display: block; }
+
+.about__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 700px;
+}
+
+/* ABOUT ME heading */
+.about__title {
+  position: absolute;
+  left: 135px;
+  top: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 55px;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  width: 458px;
+}
+
+/* Intro paragraph */
+.about__intro {
+  position: absolute;
+  left: 233px;
+  top: 103px;
+  width: 305px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.about__intro .accent {
+  font-weight: 500;
+  color: #777165;
+}
+
+/* Story paragraph */
+.about__story {
+  position: absolute;
+  left: 233px;
+  top: 193px;
+  width: 305px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+}
+
+.about__story .accent {
+  font-weight: 500;
+  color: #777165;
+}
+
+/* Right column */
+.about__col-right-1 {
+  position: absolute;
+  left: 955px;
+  top: 294px;
+  width: 305px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+}
+
+.about__col-right-2 {
+  position: absolute;
+  left: 955px;
+  top: 420px;
+  width: 295px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+}
+
+/* Center bottom */
+.about__method {
+  position: absolute;
+  left: calc(50% - 215px);
+  top: 560px;
+  width: 500px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+}
+
+.about__method .accent {
+  font-weight: 500;
+  color: #777165;
+}
+
+.about__belief {
+  position: absolute;
+  left: calc(50% - 215px);
+  top: 662px;
+  width: 441px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+}
+
+/* Photos — hover scale with snap cubic-bezier */
+.about__photo-main,
+.about__photo-small-tr,
+.about__photo-small-bl {
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+  will-change: transform;
+}
+
+.about__photo-main:hover,
+.about__photo-small-tr:hover,
+.about__photo-small-bl:hover {
+  transform: scale(1.06);
+}
+
+/* Photos */
+.about__photo-main {
+  position: absolute;
+  left: 580px;
+  top: 76px;
+  width: 325px;
+  height: 422px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about__photo-small-tr {
+  position: absolute;
+  left: 955px;
+  top: 18px;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about__photo-small-bl {
+  position: absolute;
+  left: 233px;
+  top: 328px;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  object-position: center top;
+}

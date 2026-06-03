@@ -1,0 +1,70 @@
+/* ═══ BBM BLOCK 2 — Three columns ═══
+   Reference: 1440px base                    */
+
+/* ── Entrance animation ── */
+@keyframes bbmB2RiseUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bbm-b2__col,
+.bbm-b2__divider { opacity: 0; }
+
+.bbm-b2__col.anim-in    { animation: bbmB2RiseUp 0.65s ease forwards; }
+.bbm-b2__divider.anim-in { animation: bbmB2RiseUp 0.65s ease forwards; }
+
+.bbm-b2__col.anim-done,
+.bbm-b2__divider.anim-done { opacity: 1; }
+
+/* ── Section ── */
+.bbm-b2 {
+  position: relative;
+  width: 100vw;
+  background: #0c0c0c;
+  height: 26.389vw;  /* 380/1440 */
+}
+
+/* ── Columns ── */
+.bbm-b2__col {
+  position: absolute;
+  top: 6.944vw;      /* 100/1440 */
+}
+
+.bbm-b2__col-1 { left: 9.375vw;  width: 20.069vw; } /* 135, 289 */
+.bbm-b2__col-2 { left: 40.556vw; width: 21.25vw;  } /* 584, 306 */
+.bbm-b2__col-3 { left: 72.083vw; width: 16.458vw; } /* 1038, 237 */
+
+/* ── Icons ── */
+.bbm-b2__icon {
+  display: block;
+  width: 2.222vw;    /* ~32px */
+  height: 2.222vw;
+  margin-bottom: 1.875vw; /* 27px gap to text (166-100-27=39) */
+  object-fit: contain;
+}
+
+/* ── Text ── */
+.bbm-b2__text {
+  font-weight: 300;
+  font-size: 1.181vw; /* 17/1440 */
+  line-height: 1.528vw; /* 22/1440 */
+  color: #fff;
+}
+
+/* ── Vertical dividers ── */
+.bbm-b2__divider {
+  position: absolute;
+  top: 7.222vw;      /* 104/1440 */
+  width: 1px;
+  background: #2a2a2a;
+}
+
+.bbm-b2__divider-1 {
+  left: 34.653vw;    /* 499/1440 */
+  height: 11.944vw;  /* 172/1440 */
+}
+
+.bbm-b2__divider-2 {
+  left: 66.597vw;    /* 959/1440 */
+  height: 10.417vw;  /* 150/1440 */
+}

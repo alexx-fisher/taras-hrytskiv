@@ -1,0 +1,232 @@
+/* ═══ BBM BLOCK 6 — Program Goal ═══
+   Reference: 1440px base               */
+
+/* ── Entrance animations ── */
+@keyframes bbmB6FadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bbmB6SlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bbm-b6__heading,
+.bbm-b6__subtitle,
+.bbm-b6__tag,
+.bbm-b6__row,
+.bbm-b6__apply { opacity: 0; }
+
+.bbm-b6__heading.anim-in  { animation: bbmB6SlideLeft 0.7s ease forwards; }
+.bbm-b6__subtitle.anim-in { animation: bbmB6SlideLeft 0.65s ease forwards; }
+.bbm-b6__tag.anim-in      { animation: bbmB6FadeUp 0.55s ease forwards; }
+.bbm-b6__row.anim-in      { animation: bbmB6FadeUp 0.45s ease forwards; }
+.bbm-b6__apply.anim-in    { animation: bbmB6FadeUp 0.6s ease forwards; }
+
+.bbm-b6__heading.anim-done,
+.bbm-b6__subtitle.anim-done,
+.bbm-b6__tag.anim-done,
+.bbm-b6__row.anim-done,
+.bbm-b6__apply.anim-done  { opacity: 1; }
+
+/* ── Section ── */
+.bbm-b6 {
+  position: relative;
+  width: 100vw;
+  height: 72.222vw;       /* ~1040px */
+  background: #0c0c0c;
+}
+
+/* ── Heading ── */
+.bbm-b6__heading {
+  position: absolute;
+  left: 9.722vw;          /* 140/1440 */
+  top: 4.167vw;           /* 60/1440 */
+  font-weight: 100;
+  font-size: 3.819vw;     /* 55/1440 */
+  line-height: 4.167vw;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Subtitle ── */
+.bbm-b6__subtitle {
+  position: absolute;
+  left: 14.792vw;         /* 213/1440 */
+  top: 13.75vw;           /* 198/1440 */
+  width: 18.125vw;        /* 261/1440 */
+  font-weight: 300;
+  font-size: 1.181vw;
+  line-height: 1.528vw;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ── Pill tags ── */
+.bbm-b6__tag {
+  position: absolute;
+  height: 3.819vw;        /* 55/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  background: #0c0c0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 1.181vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 0 1.5vw;
+}
+
+.bbm-b6__tag {
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.bbm-b6__tag:hover {
+  background: #ffffff;
+  color: #777165;
+  border-color: #ffffff;
+}
+
+.bbm-b6__tag--1 { left: 37.5vw;  top: 12.639vw; width: 13.889vw; } /* MINDSET */
+.bbm-b6__tag--2 { left: 51.389vw; top: 14.583vw; width: 13.889vw; } /* CLIENT SERVICE */
+.bbm-b6__tag--3 { left: 65.278vw; top: 12.639vw; width: 13.889vw; } /* COMMUNICATION */
+.bbm-b6__tag--4 { left: 40.417vw; top: 18.819vw; width: 13.889vw; } /* POSITIONING */
+.bbm-b6__tag--5 { left: 54.722vw; top: 18.819vw; width: 21.25vw;  } /* A CONSISTENT CLIENT BASE */
+.bbm-b6__tag--6 { left: 50vw;     top: 23.056vw; width: 16.667vw; } /* PROFESSIONAL GROWTH */
+
+/* ── Module rows ── */
+.bbm-b6__row {
+  position: absolute;
+  left: 37.5vw;           /* 540/1440 */
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.bbm-b6__row--1 { top: 33.819vw; } /* 487/1440 */
+.bbm-b6__row--2 { top: 38.264vw; } /* 551/1440 */
+.bbm-b6__row--3 { top: 42.708vw; } /* 615/1440 */
+.bbm-b6__row--4 { top: 47.153vw; } /* 679/1440 */
+.bbm-b6__row--5 { top: 52.847vw; } /* 761/1440 */
+
+.bbm-b6__bullet {
+  width: 1.319vw;         /* 19/1440 */
+  height: 1.319vw;
+  flex-shrink: 0;
+  display: block;
+}
+
+.bbm-b6__mod {
+  font-weight: 300;
+  font-size: 1.389vw;     /* 20/1440 */
+  line-height: 1.528vw;
+  color: #fff;
+  text-transform: uppercase;
+  width: 13.403vw;        /* 583→780 = 197px → 13.681vw */
+  padding-left: 2.986vw;  /* gap between bullet and MODULE text: 583-540-19=24px → 1.667vw + icon */
+}
+
+.bbm-b6__desc--nowrap { white-space: nowrap; width: auto; }
+
+.bbm-b6__desc {
+  font-weight: 300;
+  font-size: 1.181vw;     /* 17/1440 */
+  line-height: 1.528vw;
+  color: #fff;
+  width: 23.75vw;         /* 342/1440 */
+}
+
+/* ── Dividers ── */
+.bbm-b6__divider {
+  position: absolute;
+  left: 37.5vw;           /* 540/1440 */
+  width: 39.583vw;        /* 570/1440 */
+  height: 1px;
+  background: #1e1e1e;
+}
+
+.bbm-b6__divider--1 { top: 36.875vw; } /* 531/1440 */
+.bbm-b6__divider--2 { top: 41.319vw; } /* 595/1440 */
+.bbm-b6__divider--3 { top: 45.764vw; } /* 659/1440 */
+.bbm-b6__divider--4 { top: 51.458vw; } /* 741/1440 */
+.bbm-b6__divider--5 { top: 57.153vw; } /* 823/1440 */
+.bbm-b6__divider--6 { top: 57.153vw; } /* same as 5 — bottom line */
+
+/* ── Apply Now ── */
+.bbm-b6__apply {
+  position: absolute;
+  left: 37.5vw;           /* 540/1440 */
+  top: 62.361vw;          /* 898/1440 */
+  display: flex;
+  align-items: center;
+}
+
+.bbm-b6__apply-circle {
+  width: 4.861vw;         /* 70/1440 */
+  height: 4.861vw;
+  border-radius: 50%;
+  background: #0c0c0c;
+  border: 1px solid #777165;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.bbm-b6__apply-circle img {
+  width: 1.181vw;
+  height: 1.181vw;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bbm-b6__apply:hover .bbm-b6__apply-circle img {
+  transform: rotate(45deg);
+}
+
+.bbm-b6__apply-btn {
+  margin-left: -1px;
+  height: 4.861vw;        /* 70/1440 */
+  width: 22.917vw;        /* 330/1440 */
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+
+.bbm-b6__apply-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.bbm-b6__apply-btn:hover { border-color: #a09a8e; }
+.bbm-b6__apply-btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.bbm-b6__apply-btn span {
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 1.111vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.117vw;
+  transition: color 0.4s ease;
+}
+
+.bbm-b6__apply-btn:hover span { color: #fff; }

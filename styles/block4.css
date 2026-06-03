@@ -1,0 +1,308 @@
+/* ═══ BLOCK 4 — Professional Work ═══ */
+.b4 {
+  position: relative;
+  width: 100vw;
+  height: 48.958vw;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+.b4__heading {
+  position: absolute;
+  left: 9.375vw;
+  top: 4.167vw;
+  width: 34.583vw;
+  font-weight: 100;
+  font-size: 3.819vw;
+  line-height: 3.819vw;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.b4__desc1 {
+  position: absolute;
+  left: 43.958vw;
+  top: 4.167vw;
+  width: 19.444vw;
+  font-weight: 300;
+  font-size: 1.042vw;
+  line-height: 1.319vw;
+  color: #fff;
+}
+
+.b4__desc2 {
+  position: absolute;
+  left: 43.958vw;
+  top: 9.514vw;
+  width: 18.403vw;
+  font-weight: 300;
+  font-size: 1.042vw;
+  line-height: 1.319vw;
+  color: #fff;
+}
+
+/* ── Button ── */
+.b4__btn {
+  position: absolute;
+  left: 71.875vw;
+  top: 7.986vw;
+  width: 18.75vw;
+  height: 4.167vw;
+  border: 1px solid #777165;
+  border-radius: 10.417vw;
+  display: flex;
+  align-items: center;
+  padding: 0 2vw;
+  justify-content: space-between;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.b4__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10.417vw;
+  background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+  clip-path: inset(0 100% 0 0 round 10.417vw);
+  transition: clip-path 0.4s ease;
+  z-index: 0;
+}
+
+.b4__btn:hover { border-color: #a09a8e; }
+.b4__btn:hover::after { clip-path: inset(0 0% 0 0 round 10.417vw); }
+
+.b4__btn span {
+  font-weight: 300;
+  font-size: 0.972vw;
+  color: #777165;
+  text-transform: uppercase;
+  letter-spacing: 0.102vw;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.b4__btn:hover span { color: #fff; }
+
+.b4__btn .arrow {
+  width: 0.934vw;
+  height: 0.934vw;
+  transform: rotate(-135deg);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s ease, filter 0.4s ease;
+}
+
+.b4__btn:hover .arrow {
+  transform: rotate(-90deg);
+  filter: brightness(10);
+}
+
+/* ── Carousel ── */
+.b4__carousel {
+  position: absolute;
+  top: 16.111vw;
+  left: 9.375vw;
+  width: calc(4 * 19.792vw + 3 * 0.625vw);
+  height: 22.5vw;
+  overflow: hidden;
+  transform: translateZ(0); /* force composite layer at load to prevent first-click jump */
+  -webkit-transform: translateZ(0);
+}
+
+.b4__track {
+  display: flex;
+  gap: 0.625vw;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.b4__photo-wrap {
+  flex: 0 0 19.792vw;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.b4__photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.b4__photo-wrap:hover img { transform: scale(1.04); }
+
+.b4__num {
+  position: absolute;
+  top: 15px;
+  left: 0.972vw;
+  font-weight: 400;
+  font-size: 0.833vw;
+  line-height: 1.528vw;
+  color: #fff;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── View More ── */
+.b4__view-more {
+  position: absolute;
+  left: 29.792vw;
+  top: 41.875vw;
+  display: flex;
+  align-items: center;
+  gap: 0.556vw;
+  text-decoration: none;
+  cursor: pointer;
+  height: 1.181vw;
+}
+
+.b4__view-more span {
+  font-weight: 300;
+  font-size: 1.111vw;
+  line-height: 1.181vw;
+  color: #686868;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  width: 9.8vw;
+  display: inline-block;
+}
+
+.b4__view-more img {
+  width: 0.833vw;
+  height: 0.764vw;
+  transform: rotate(-90deg);
+  position: absolute;
+  left: 10.4vw;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+/* ── Nav arrows ── */
+.b4__nav {
+  position: absolute;
+  left: 82.778vw;
+  top: 40.625vw;
+  display: flex;
+  gap: 0.833vw;
+  align-items: center;
+}
+
+.b4__nav-btn {
+  width: 3.472vw;
+  height: 3.472vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.b4__nav-btn:hover { transform: scale(1.12); }
+
+.b4__nav-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: filter 0.25s ease;
+}
+
+.b4__nav-btn:hover img { filter: brightness(0) invert(1); }
+.b4__nav-btn--left img { transform: rotate(180deg); }
+
+/* ── Entrance animations ── */
+@keyframes b4SlideLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes b4RiseUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.b4__heading, .b4__desc1, .b4__desc2, .b4__btn, .b4__photo-wrap { opacity: 0; }
+
+.b4__heading.anim-in  { animation: b4SlideLeft 0.7s ease forwards; }
+.b4__desc1.anim-in, .b4__desc2.anim-in,
+.b4__btn.anim-in, .b4__photo-wrap.anim-in { animation: b4RiseUp 0.6s ease forwards; }
+
+.b4__heading.anim-done, .b4__desc1.anim-done, .b4__desc2.anim-done,
+.b4__btn.anim-done, .b4__photo-wrap.anim-done { opacity: 1; }
+
+/* ── Lightbox ── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 3vw;
+  height: 3vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease;
+}
+
+.lightbox__close:hover { transform: rotate(90deg); }
+
+.lightbox__close::before,
+.lightbox__close::after {
+  content: '';
+  position: absolute;
+  width: 2vw;
+  height: 1px;
+  background: #fff;
+}
+
+.lightbox__close::before { transform: rotate(45deg); }
+.lightbox__close::after  { transform: rotate(-45deg); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.472vw;
+  height: 3.472vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+  z-index: 10001;
+}
+
+.lightbox__nav:hover { transform: translateY(-50%) scale(1.12); }
+.lightbox__nav img { width: 100%; height: 100%; display: block; transition: filter 0.25s ease; }
+.lightbox__nav:hover img { filter: brightness(0) invert(1); }
+.lightbox__nav--left  { left: 2vw; }
+.lightbox__nav--right { right: 2vw; }
+.lightbox__nav--left img { transform: rotate(180deg); }
