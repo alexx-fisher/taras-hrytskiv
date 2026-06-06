@@ -21,7 +21,7 @@
 
 <!-- ═══ LOADER OVERLAY ═══ -->
 <style>
-  #loaderOverlay { position:fixed;inset:0;z-index:9999;background:#0c0c0c;transition:transform 0.7s cubic-bezier(0.76,0,0.24,1); }
+  #loaderOverlay { position:fixed;inset:0;z-index:9999;background:#0c0c0c;opacity:0;transition:transform 0.7s cubic-bezier(0.76,0,0.24,1); }
   .ldr-words { position:absolute;top:13.1vh;left:50%;transform:translateX(-50%);display:flex;gap:4.167vw;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:1.25vw;white-space:nowrap; }
   .ldr-words span { color:#262626;transition:color 0.4s ease; }
   .ldr-words span.lit { color:#ffffff; }
@@ -58,6 +58,7 @@
   }
 
   sessionStorage.setItem('siteVisited', '1');
+  overlay.style.opacity = '1';
 
   const DURATION = 2800;
   const C        = 2 * Math.PI * 45;
