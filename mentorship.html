@@ -379,9 +379,14 @@
     menu.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
-  if (openBtn) openBtn.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-  links.forEach(link => link.addEventListener('click', closeMenu));
+  function instant(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', () => { if (!didTouch) fn(); });
+  }
+  if (openBtn) instant(openBtn, openMenu);
+  instant(closeBtn, closeMenu);
+  links.forEach(link => instant(link, closeMenu));
 })();
 
 // ═══ BBM BLOCK 2 — Scroll animations ═══

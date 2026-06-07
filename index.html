@@ -800,11 +800,17 @@
     document.body.style.overflow = '';
   }
 
-  openBtn.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
+  function instant(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', () => { if (!didTouch) fn(); });
+  }
+
+  instant(openBtn, openMenu);
+  instant(closeBtn, closeMenu);
 
   // Close on nav link tap
-  links.forEach(link => link.addEventListener('click', closeMenu));
+  links.forEach(link => instant(link, closeMenu));
 })();
 
 

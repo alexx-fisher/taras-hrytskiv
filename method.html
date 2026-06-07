@@ -309,14 +309,16 @@
   const menu  = document.getElementById('mobMenu');
   const close = document.getElementById('mobMenuClose');
   if (!btn || !menu) return;
-  btn.addEventListener('click', () => {
-    menu.classList.add('is-open');
-    menu.setAttribute('aria-hidden', 'false');
-  });
-  close.addEventListener('click', () => {
-    menu.classList.remove('is-open');
-    menu.setAttribute('aria-hidden', 'true');
-  });
+  function instant(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', () => { if (!didTouch) fn(); });
+  }
+  instant(btn, () => { menu.classList.add('is-open'); menu.setAttribute('aria-hidden', 'false'); });
+  instant(close, () => { menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); });
+  menu.querySelectorAll('.mob-menu__link, .mob-menu__cta').forEach(link =>
+    instant(link, () => { menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); })
+  );
 })();
 </script>
 
