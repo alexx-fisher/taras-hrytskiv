@@ -555,7 +555,7 @@ body.loaded .hero__portrait {
   /* ── Section ── */
   .hero {
     height: 680px;
-    min-height: 0;
+    min-height: 680px;
     background: #0c0c0c;
     overflow: visible;
   }
@@ -681,8 +681,8 @@ body.loaded .hero__portrait {
 
   .hero__heading .name-first,
   .hero__heading .name-last {
-    font-size: 55px;
-    letter-spacing: 1.1px;
+    font-size: 18vw;
+    letter-spacing: 0.02em;
   }
 
   /* ── Subtitle ── */
@@ -694,7 +694,7 @@ body.loaded .hero__portrait {
   }
 
   .hero__subtitle span {
-    font-size: 18px;
+    font-size: 4.6vw;
     line-height: 27px;
   }
 
@@ -710,13 +710,13 @@ body.loaded .hero__portrait {
   .hero__desc {
     left: 22px;
     top: 460px;
-    width: 298px;
+    width: calc(100% - 90px);
     animation-delay: 0.4s;
   }
 
   /* Merge both <p> into one flowing text block */
   .hero__desc p {
-    font-size: 18px;
+    font-size: 4.6vw;
     line-height: 22px;
     display: inline;
   }
@@ -734,7 +734,7 @@ body.loaded .hero__portrait {
   .hero__more-btn {
     left: 20px;
     top: 590px;
-    width: 350px;
+    width: calc(100% - 40px);
     height: 70px;
     padding: 0 43px 0 24px;
     animation: fadeSlideUp 0.6s ease forwards paused;
