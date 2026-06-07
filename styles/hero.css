@@ -681,8 +681,8 @@ body.loaded .hero__portrait {
 
   .hero__heading .name-first,
   .hero__heading .name-last {
-    font-size: 18vw;
-    letter-spacing: 0.02em;
+    font-size: 55px;
+    letter-spacing: 1.1px;
   }
 
   /* ── Subtitle ── */
@@ -694,7 +694,7 @@ body.loaded .hero__portrait {
   }
 
   .hero__subtitle span {
-    font-size: 4.6vw;
+    font-size: 18px;
     line-height: 27px;
   }
 
@@ -710,13 +710,13 @@ body.loaded .hero__portrait {
   .hero__desc {
     left: 22px;
     top: 460px;
-    width: calc(100% - 90px);
+    width: 298px;
     animation-delay: 0.4s;
   }
 
   /* Merge both <p> into one flowing text block */
   .hero__desc p {
-    font-size: 4.6vw;
+    font-size: 18px;
     line-height: 22px;
     display: inline;
   }
@@ -734,7 +734,7 @@ body.loaded .hero__portrait {
   .hero__more-btn {
     left: 20px;
     top: 590px;
-    width: calc(100% - 40px);
+    width: 350px;
     height: 70px;
     padding: 0 43px 0 24px;
     animation: fadeSlideUp 0.6s ease forwards paused;
