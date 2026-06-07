@@ -605,35 +605,24 @@
 (function() {
   const track    = document.getElementById('b4Track');
   const carousel = document.querySelector('.b4__carousel');
-  const TOTAL    = document.querySelectorAll('.b4__photo-wrap').length; // 5
+  const TOTAL    = document.querySelectorAll('.b4__photo-wrap').length;
   let current = 0;
   let scrollOffset = 0;
 
   track.style.transform = 'translateX(0px)';
 
   function isMob() { return window.innerWidth <= 768; }
-
-  // Desktop: 19.792vw + 0.625vw gap = 20.417vw
-  // Mobile:  285px slide + 10px gap = 295px
-  function getSlideWidth() {
-    return isMob() ? 295 : window.innerWidth * 0.20417;
-  }
-
-  function getMax() {
-    return isMob() ? TOTAL - 1 : 1;
-  }
-
-  // Mobile: last photo right-aligned in container (20px padding each side → container=350px)
-  // maxOffset = TOTAL*(slide+gap) - gap - container = 5*295 - 10 - 350 = 1115
+  function getSlideWidth() { return isMob() ? 295 : window.innerWidth * 0.20417; }
+  function getMax() { return isMob() ? TOTAL - 1 : 1; }
   function getMaxOffset() {
-    if (isMob()) return TOTAL * 295 - 10 - (window.innerWidth - 40);
+    if (isMob()) return Math.max(0, TOTAL * 295 - 10 - (window.innerWidth - 40));
     return getSlideWidth() * 1;
   }
 
   function goTo(idx) {
     current = Math.max(0, Math.min(idx, getMax()));
     scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
-    track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
+    track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }
 
@@ -650,24 +639,44 @@
     current = Math.round(scrollOffset / getSlideWidth());
   }, { passive: false });
 
-  // Mobile: touch swipe
-  let touchStartX = 0;
-  let touchStartOffset = 0;
+  // Mobile: free swipe with momentum
+  let touchStartX = 0, touchStartOffset = 0;
+  let lastX = 0, lastTime = 0, velocity = 0;
+  let rafId = null;
+
   carousel.addEventListener('touchstart', e => {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     touchStartX = e.touches[0].clientX;
     touchStartOffset = scrollOffset;
+    lastX = touchStartX;
+    lastTime = Date.now();
+    velocity = 0;
     track.style.transition = 'none';
   }, { passive: true });
 
   carousel.addEventListener('touchmove', e => {
+    const now = Date.now();
     const dx = touchStartX - e.touches[0].clientX;
+    const dt = now - lastTime;
+    if (dt > 0) velocity = (e.touches[0].clientX - lastX) / dt;
+    lastX = e.touches[0].clientX;
+    lastTime = now;
     scrollOffset = Math.max(0, Math.min(touchStartOffset + dx, getMaxOffset()));
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }, { passive: true });
 
   carousel.addEventListener('touchend', () => {
-    current = Math.round(scrollOffset / getSlideWidth());
-    goTo(current);
+    // Apply momentum — no snap
+    let v = -velocity * 16; // px per frame
+    const decay = 0.92;
+    function momentum() {
+      if (Math.abs(v) < 0.5) { current = Math.round(scrollOffset / getSlideWidth()); return; }
+      scrollOffset = Math.max(0, Math.min(scrollOffset + v, getMaxOffset()));
+      track.style.transform = `translateX(-${scrollOffset}px)`;
+      v *= decay;
+      rafId = requestAnimationFrame(momentum);
+    }
+    rafId = requestAnimationFrame(momentum);
   });
 })();
 
@@ -791,49 +800,67 @@
 (function() {
   const track    = document.getElementById('b6Track');
   const carousel = document.querySelector('.b6__carousel');
-  const TOTAL    = document.querySelectorAll('.b6__slide').length; // 3
+  const TOTAL    = document.querySelectorAll('.b6__slide').length;
   let current = 0, scrollOffset = 0;
 
   track.style.transform = 'translateX(0px)';
 
   function isMob() { return window.innerWidth <= 768; }
-  // slide:230px + gap:10px = 240px step
   function getSlideWidth() { return isMob() ? 240 : 0; }
-  // last slide right-aligned with 20px margin: 3*240 + 10 - (vw-20)
-  function getMaxOffset() { return isMob() ? TOTAL * 240 + 10 - (window.innerWidth - 20) : 0; }
+  function getMaxOffset() { return isMob() ? Math.max(0, TOTAL * 240 + 10 - (window.innerWidth - 20)) : 0; }
   function getMax() { return isMob() ? TOTAL - 1 : 0; }
 
   function goTo(idx) {
     if (!isMob()) return;
     current = Math.max(0, Math.min(idx, getMax()));
     scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
-    track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
+    track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }
 
   document.querySelector('.b6__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
   document.querySelector('.b6__nav-btn--right').addEventListener('click', () => goTo(current + 1));
 
-  // Touch swipe
+  // Mobile: free swipe with momentum
   let touchStartX = 0, touchStartOffset = 0;
+  let lastX = 0, lastTime = 0, velocity = 0;
+  let rafId = null;
+
   carousel.addEventListener('touchstart', e => {
     if (!isMob()) return;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     touchStartX = e.touches[0].clientX;
     touchStartOffset = scrollOffset;
+    lastX = touchStartX;
+    lastTime = Date.now();
+    velocity = 0;
     track.style.transition = 'none';
   }, { passive: true });
 
   carousel.addEventListener('touchmove', e => {
     if (!isMob()) return;
+    const now = Date.now();
     const dx = touchStartX - e.touches[0].clientX;
+    const dt = now - lastTime;
+    if (dt > 0) velocity = (e.touches[0].clientX - lastX) / dt;
+    lastX = e.touches[0].clientX;
+    lastTime = now;
     scrollOffset = Math.max(0, Math.min(touchStartOffset + dx, getMaxOffset()));
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }, { passive: true });
 
   carousel.addEventListener('touchend', () => {
     if (!isMob()) return;
-    current = Math.round(scrollOffset / getSlideWidth());
-    goTo(current);
+    let v = -velocity * 16;
+    const decay = 0.92;
+    function momentum() {
+      if (Math.abs(v) < 0.5) { current = Math.round(scrollOffset / getSlideWidth()); return; }
+      scrollOffset = Math.max(0, Math.min(scrollOffset + v, getMaxOffset()));
+      track.style.transform = `translateX(-${scrollOffset}px)`;
+      v *= decay;
+      rafId = requestAnimationFrame(momentum);
+    }
+    rafId = requestAnimationFrame(momentum);
   });
 
   // ── Touch tilt effect on magazine covers (mobile) ──
