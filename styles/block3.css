@@ -204,3 +204,100 @@
 
 /* labels: anim-done keeps cycling color but stays visible */
 .block3__labels.anim-done { opacity: 1; }
+
+/* ══════════════════════════════════════════
+   BLOCK 3 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .block3 {
+    height: auto;
+    margin-top: 0;
+    padding: 40px 0 40px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block3__heading {
+    order: 1;
+    position: relative;
+    left: auto; top: auto;
+    width: auto;
+    padding: 0 20px;
+    font-size: 50px;
+    line-height: 52px;
+    margin-bottom: 28px;
+  }
+
+  .block3__subtitle {
+    order: 2;
+    position: relative;
+    left: auto; top: auto;
+    width: auto;
+    padding: 0 20px;
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 0;
+  }
+
+  /* Line + desc side-by-side via float */
+  .block3__line-decor {
+    order: 3;
+    position: relative;
+    left: auto; top: auto;
+    width: 23px;
+    height: 1px;
+    float: left;
+    margin: 10px 16px 0 20px;
+  }
+
+  .block3__desc {
+    order: 4;
+    position: relative;
+    left: auto; top: auto;
+    width: auto;
+    padding: 0 20px 0 0;
+    margin-left: 60px;
+    margin-right: 20px;
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  /* Mockup goes between desc and button */
+  .block3__mockup {
+    order: 5;
+    position: relative;
+    left: auto; bottom: auto;
+    width: calc(100% - 40px);
+    height: auto;
+    display: block;
+    margin: 32px 20px;
+  }
+
+  .block3__btn {
+    order: 6;
+    position: relative;
+    left: auto; top: auto;
+    width: calc(100% - 40px);
+    height: 70px;
+    margin: 0 20px;
+    padding: 0 24px;
+  }
+
+  .block3__btn span {
+    font-size: 14px;
+    letter-spacing: 1.47px;
+  }
+
+  .block3__btn .arrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Labels hidden on mobile */
+  .block3__labels {
+    display: none;
+  }
+}

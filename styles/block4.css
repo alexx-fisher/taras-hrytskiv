@@ -306,3 +306,133 @@
 .lightbox__nav--left  { left: 2vw; }
 .lightbox__nav--right { right: 2vw; }
 .lightbox__nav--left img { transform: rotate(180deg); }
+
+/* ══════════════════════════════════════════
+   BLOCK 4 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .b4 {
+    height: 873px;
+    overflow: hidden;
+  }
+
+  .b4__heading {
+    left: 20px;
+    top: 50px;
+    width: 317px;
+    font-size: 45px;
+    line-height: 45px;
+  }
+
+  .b4__desc1 {
+    left: 20px;
+    top: 164px;
+    width: 280px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .b4__desc2 {
+    left: 20px;
+    top: 241px;
+    width: 265px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  /* ── Carousel: left:20px, slides 285px, peek ~75px ── */
+  .b4__carousel {
+    top: 334px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 324px;
+  }
+
+  .b4__track { gap: 10px; }
+
+  .b4__photo-wrap {
+    flex: 0 0 285px;
+    height: 324px;
+  }
+
+  .b4__num {
+    font-size: 12px;
+    left: 14px;
+  }
+
+  /* ── View More ── */
+  .b4__view-more {
+    left: 20px;
+    top: 716px;
+    height: auto;
+  }
+
+  .b4__view-more span {
+    font-size: 16px;
+    line-height: 17px;
+    width: auto;
+  }
+
+  .b4__view-more img {
+    width: 12px;
+    height: 11px;
+    position: relative;
+    left: auto;
+    top: auto;
+    translate: none;
+  }
+
+  /* ── Nav arrows ── */
+  .b4__nav {
+    left: auto;
+    right: 19px;
+    top: 693px;
+    gap: 10px;
+  }
+
+  .b4__nav-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* ── Book Appointment button ── */
+  .b4__btn {
+    left: 20px;
+    top: 783px;
+    width: 350px;
+    height: 70px;
+    padding: 0 24px;
+  }
+
+  .b4__btn span {
+    font-size: 14px;
+    letter-spacing: 1.47px;
+  }
+
+  .b4__btn .arrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ── Lightbox mobile ── */
+  .lightbox__close {
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox__close::before,
+  .lightbox__close::after {
+    width: 20px;
+  }
+
+  .lightbox__nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox__nav--left  { left: 10px; }
+  .lightbox__nav--right { right: 10px; }
+}

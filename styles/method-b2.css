@@ -140,3 +140,76 @@
   height: 2.014vw;
   transform: inherit; /* rotates with the card */
 }
+
+/* ══════════════════════════════════════════
+   METHOD BLOCK 2 MOBILE  ≤ 768px
+   Ref: Figma node 328:1209 — 390px wide
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Section height: content ends at 309px */
+  .method-b2 {
+    height: 312px;
+    background: #0c0c0c;
+    margin-bottom: 80px;
+  }
+
+  /* Spans flow as inline text — natural word-wrap at paragraph width */
+  .mb2-line { display: inline; }
+
+  /* ── Para 1: x:20 y:50 w:277 fs:20 lh:25 ── */
+  .method-b2__para1 {
+    left: 20px;
+    top: 50px;
+    width: 277px;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  /* ── Para 2: x:108 y:184 w:269 fs:20 lh:25 ── */
+  .method-b2__para2 {
+    left: 108px;
+    top: 184px;
+    width: 269px;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  /* ── Badge 1 (trending up): x:278 y:85 size:90 inner:73 icon:26 ── */
+  .method-b2__badge-1 {
+    left: 278px;
+    top: 85px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .method-b2__badge-1 .method-b2__badge-inner {
+    width: 73px;
+    height: 73px;
+    border-radius: 20px;
+  }
+
+  .method-b2__badge-1 .method-b2__badge-inner img {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* ── Badge 2 (dollar): x:16 y:188 size:81 inner:65 icon:24 ── */
+  .method-b2__badge-2 {
+    left: 16px;
+    top: 188px;
+    width: 81px;
+    height: 81px;
+  }
+
+  .method-b2__badge-2 .method-b2__badge-inner {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+  }
+
+  .method-b2__badge-2 .method-b2__badge-inner img {
+    width: 24px;
+    height: 24px;
+  }
+}

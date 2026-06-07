@@ -119,3 +119,77 @@
 .ft__legal:hover { color: #fff; }
 .ft__legal-privacy { left: 73.264vw; }
 .ft__legal-terms   { left: 84.931vw; }
+
+/* ══════════════════════════════════════════
+   FOOTER MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .ft {
+    height: 600px;
+    overflow: hidden;
+  }
+
+  .ft__panel {
+    top: 50px;
+    height: 550px;
+  }
+
+  /* ── Logo ── */
+  .ft__logo {
+    left: 23px;
+    top: 78px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ── Socials — horizontal row ── */
+  .ft__social {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .ft__social-instagram { left: 121px; top: 85px; }
+  .ft__social-youtube   { left: 229px; top: 85px; }
+  .ft__social-tiktok    { left: 321px; top: 85px; }
+
+  /* ── Column titles ── */
+  .ft__col-title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .ft__col-title-nav     { left: 20px;  top: 200px; }
+  .ft__col-title-contact { left: 194px; top: 200px; }
+  .ft__col-title-talk    { left: 20px;  top: 481px; }
+
+  /* ── Navigation links ── */
+  .ft__nav {
+    left: 20px;
+    top: 242px;
+    font-size: 13px;
+    line-height: 30px;
+  }
+
+  /* ── Contact info ── */
+  .ft__contact {
+    left: 194px;
+    top: 242px;
+    font-size: 13px;
+    line-height: 30px;
+  }
+
+  /* ── Let's Talk button ── */
+  .ft__talk-btn {
+    left: 20px;
+    top: 519px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ── Legal links ── */
+  .ft__legal {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .ft__legal-privacy { left: 241px; top: 509px; }
+  .ft__legal-terms   { left: 241px; top: 539px; }
+}

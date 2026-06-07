@@ -98,3 +98,60 @@
   color: #fff;
   text-transform: uppercase;
 }
+
+/* ══════════════════════════════════════════
+   BBM BLOCK 3 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .bbm-b3 {
+    height: 915px;
+    margin-bottom: 80px;
+  }
+
+  /* ── Heading ── */
+  .bbm-b3__heading {
+    left: 23px;
+    top: 50px;
+    width: 299px;
+    font-size: 45px;
+    line-height: 45px;
+  }
+
+  /* ── Note — 40px gap from last divider ── */
+  .bbm-b3__note {
+    left: 79px;
+    top: 833px;
+    width: 260px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /* ── List: full width, below heading ── */
+  .bbm-b3__list {
+    left: 25px;
+    top: 235px;
+    width: 351px;
+  }
+
+  .bbm-b3__item {
+    height: 62px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+
+  .bbm-b3__item--last {
+    border-bottom: none;
+  }
+
+  .bbm-b3__num {
+    width: 54px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #525252;
+  }
+
+  .bbm-b3__label {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

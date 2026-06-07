@@ -165,6 +165,9 @@ body.loaded .hero__portrait {
   z-index: 5;
 }
 
+/* Hamburger — desktop: hidden */
+.hero__menu-btn { display: none; }
+
 /* ─── Navigation ─── */
 /* Group 47313: y=14; logo x=135 y=19; btn x=1143 y=14 w=162 h=40 */
 .hero__nav {
@@ -535,4 +538,340 @@ body.loaded .hero__portrait {
 .hero__socials .icon-tiktok {
   width: 2.083vw;
   height: 2.083vw;
+}
+
+/* ══════════════════════════════════════════
+   MOBILE  ≤ 768px
+   Reference: 390×680px Figma mobile frame
+══════════════════════════════════════════ */
+
+@keyframes fadeSlideLeftDim {
+  from { opacity: 0;   transform: translateX(-32px); }
+  to   { opacity: 0.4; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+
+  /* ── Section ── */
+  .hero {
+    height: 680px;
+    min-height: 0;
+    background: #0c0c0c;
+    overflow: visible;
+  }
+
+  /* ── Mask group — full hero area, allow portrait overflow right ── */
+  .hero__mask-group {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible; /* hero section clips it */
+  }
+
+  /* ── Background fills full mask group ── */
+  .hero__bg-img {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* ── Instagram screenshot — top-left, behind portrait ── */
+  .hero__screen2 {
+    left: 5px;
+    top: 97px;
+    width: 262px;
+    height: 263px;
+    object-fit: cover;
+    border-radius: 4px;
+    z-index: 1;  /* behind portrait (z-index: 2) */
+    animation: fadeSlideLeftDim 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards paused;
+    animation-delay: 0.2s;
+  }
+
+  /* ── Portrait — matches Figma: left:52px, width:407px (overflows right) ── */
+  .hero__portrait {
+    left: 52px;
+    top: 10px;
+    width: 407px;
+    height: 580px;
+    object-fit: cover;
+    object-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    animation-delay: 0.1s;
+  }
+
+  /* ── Bottom gradient fade ── */
+  .hero__mask-group::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(12,12,12,0) 55%, #0c0c0c 93%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Hamburger: hidden on desktop, visible on mobile ── */
+  .hero__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 19px;
+    top: 22px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+  }
+
+  .hero__menu-btn svg {
+    width: 20px;
+    height: 15px;
+  }
+
+  /* ── Nav: logo only (links + CTA hidden) ── */
+  .hero__nav-links,
+  .hero__cta-btn,
+  .hero__label-vertical,
+  .hero__scroll,
+  .hero__insta-card,
+  .hero__line-decor {
+    display: none !important;
+  }
+
+  .hero__logo {
+    left: 20px;
+    top: 33px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ── Social icons — vertical column, right side ── */
+  .hero__socials {
+    left: auto;
+    right: 29px;
+    top: 125px;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 6;
+    animation-delay: 0.2s;
+  }
+
+  .hero__socials .icon-instagram { width: 22px; height: 22px; margin-bottom: 0; }
+  .hero__socials .icon-youtube   { width: 26px; height: 26px; margin-bottom: 0; }
+  .hero__socials .icon-tiktok    { width: 26px; height: 26px; }
+
+  /* ── Heading ── */
+  .hero__heading {
+    left: 20px;
+    top: 308px;
+    line-height: 50px;
+    animation-delay: 0s;
+  }
+
+  .hero__heading .name-first,
+  .hero__heading .name-last {
+    font-size: 55px;
+    letter-spacing: 1.1px;
+  }
+
+  /* ── Subtitle ── */
+  .hero__subtitle {
+    left: 20px;
+    top: 416px;
+    gap: 12px;
+    animation-delay: 0.3s;
+  }
+
+  .hero__subtitle span {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .hero__subtitle .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #777165;
+    display: inline-block;
+  }
+
+  /* ── Description ── */
+  .hero__desc {
+    left: 22px;
+    top: 460px;
+    width: 298px;
+    animation-delay: 0.4s;
+  }
+
+  /* Merge both <p> into one flowing text block */
+  .hero__desc p {
+    font-size: 18px;
+    line-height: 22px;
+    display: inline;
+  }
+
+  .hero__desc p::after {
+    content: ' ';
+  }
+
+  /* Remove <br> on mobile */
+  .hero__desc p br {
+    display: none;
+  }
+
+  /* ── More Details button ── */
+  .hero__more-btn {
+    left: 20px;
+    top: 590px;
+    width: 350px;
+    height: 70px;
+    padding: 0 43px 0 24px;
+    animation: fadeSlideUp 0.6s ease forwards paused;
+    animation-delay: 0.6s;
+  }
+
+  .hero__more-btn span {
+    font-size: 16px;
+    letter-spacing: 1.68px;
+  }
+
+  .hero__more-btn .arrow {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ══════════════════════════════════════════
+   MOBILE MENU OVERLAY
+══════════════════════════════════════════ */
+.mob-menu {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .mob-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: #0c0c0c;
+    z-index: 999;
+    padding: 30px 30px 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .mob-menu.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Close button — top right */
+  .mob-menu__close {
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .mob-menu__close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Nav links */
+  .mob-menu__nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 110px;
+    gap: 0;
+  }
+
+  .mob-menu__link {
+    font-weight: 100;
+    font-size: 42px;
+    line-height: 1.15;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+    padding: 6px 0;
+  }
+
+  .mob-menu__link:active { color: #777165; }
+
+  /* Book Consultation CTA */
+  .mob-menu__cta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    border: 1px solid #777165;
+    border-radius: 150px;
+    padding: 0 24px;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.4s ease;
+  }
+
+  .mob-menu__cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 150px;
+    background: linear-gradient(90deg, #777165 0%, #0c0c0c 100%);
+    clip-path: inset(0 100% 0 0 round 150px);
+    transition: clip-path 0.4s ease;
+    z-index: 0;
+  }
+
+  .mob-menu__cta:hover { border-color: #a09a8e; }
+  .mob-menu__cta:hover::after { clip-path: inset(0 0% 0 0 round 150px); }
+  .mob-menu__cta:hover span { color: #fff; }
+
+  .mob-menu__cta span {
+    font-weight: 300;
+    font-size: 14px;
+    color: #777165;
+    text-transform: uppercase;
+    letter-spacing: 1.47px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+  }
+
+  .mob-menu__cta-arrow {
+    width: 14px;
+    height: 14px;
+    transform: rotate(-135deg);
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
 }

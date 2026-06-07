@@ -263,3 +263,140 @@
   animation: mhScrollPulse 1.6s ease-in-out infinite;
   transform-origin: center;
 }
+
+/* ══════════════════════════════════════════
+   METHOD HERO MOBILE  ≤ 768px
+   Ref: Figma node 328:1166 — "mob" 390×750
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Section ── */
+  .method-hero {
+    height: 697px;
+    min-height: 697px;
+    background: #0c0c0c;
+    margin-bottom: 80px;
+    overflow: visible;
+  }
+
+  /* ── Background photo — same treatment as bbm-hero mobile ── */
+  .method-hero__mask-group {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .method-hero__bg-img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 340px;
+    top: 0;
+    left: 0;
+    transform: none;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Gradient fade at bottom of photo area */
+  .method-hero__mask-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 160px;
+    background: linear-gradient(to bottom, transparent 0%, #0c0c0c 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── Book: Figma x:-151 y:-61 w:661 h:484 ── */
+  .method-hero__book {
+    left: -151px;
+    top: -61px;
+    width: 661px;
+    height: auto;
+    z-index: 1;
+  }
+
+  /* ── Side text: hidden ── */
+  .method-hero__side-text { display: none; }
+
+  /* ── Nav: hide links + CTA, show hamburger ── */
+  .method-hero .bbm-hero__nav-links { display: none; }
+  .method-hero .bbm-hero__cta-btn   { display: none; }
+  .method-hero .bbm-hero__menu-btn  { display: flex; }
+
+  /* ── Heading: x:20 y:345 fs:40 lh:40 fw:200 ── */
+  .method-hero__heading {
+    left: 20px;
+    top: 345px;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 200;
+  }
+
+  /* ── "BARBER": x:81 y:424 fs:40 lh:40 fw:200 ── */
+  .method-hero__barber {
+    left: 81px;
+    top: 424px;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 200;
+  }
+
+  /* ── Desc row: x:20 y:491 ── */
+  .method-hero__desc-row {
+    left: 20px;
+    top: 491px;
+    gap: 12px;
+  }
+
+  /* Line: w:49px, offset ~11px to align with text midline */
+  .method-hero__line-decor {
+    width: 49px;
+    margin-top: 11px;
+  }
+
+  /* Desc text: w:282 fs:17 lh:22 */
+  .method-hero__desc {
+    width: 282px;
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  /* ── CTA button: x:20 y:627 w:350 h:70 — same dark outlined style as other pages ── */
+  .method-hero__more-btn {
+    left: 20px;
+    top: 627px;
+    width: 350px;
+    height: 70px;
+    border-radius: 35px;
+    padding: 0 43px 0 24px;
+  }
+
+  .method-hero__more-btn::after {
+    border-radius: 35px;
+    clip-path: inset(0 100% 0 0 round 35px);
+  }
+
+  .method-hero__more-btn:hover::after {
+    clip-path: inset(0 0% 0 0 round 35px);
+  }
+
+  .method-hero__more-btn span {
+    font-size: 16px;
+    letter-spacing: 1.68px;
+  }
+
+  .method-hero__more-btn .arrow {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* ── Scroll indicator: hidden ── */
+  .method-hero__scroll { display: none; }
+}

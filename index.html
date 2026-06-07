@@ -28,6 +28,11 @@
   .ldr-ring { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7.057vw;height:7.057vw;display:flex;align-items:center;justify-content:center; }
   .ldr-ring svg { position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg); }
   .ldr-num { position:relative;z-index:1;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:100;font-size:1.736vw;color:#fff;letter-spacing:0.02em;line-height:1; }
+  @media (max-width: 768px) {
+    .ldr-words { left:59px;transform:none;gap:0;justify-content:space-between;width:272px;font-size:18px; }
+    .ldr-ring { width:102px;height:102px;left:144px;top:284px;transform:none; }
+    .ldr-num { font-size:25px; }
+  }
 </style>
 <div id="loaderOverlay">
   <div class="ldr-words">
@@ -105,8 +110,38 @@
     <img class="hero__portrait" src="assets/photo_main.webp" alt="" />
   </div>
 
+  <!-- Mobile menu overlay -->
+  <div class="mob-menu" id="mobMenu" aria-hidden="true">
+    <button class="mob-menu__close" id="mobMenuClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2" y1="2" x2="22" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="2" x2="2" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav class="mob-menu__nav">
+      <a href="index.html" class="mob-menu__link">Home</a>
+      <a href="#about" class="mob-menu__link">About</a>
+      <a href="mentorship.html" class="mob-menu__link">Mentorship</a>
+      <a href="index.html#works" class="mob-menu__link">Works</a>
+      <a href="method.html" class="mob-menu__link">Method</a>
+      <a href="index.html#media" class="mob-menu__link">Media</a>
+      <a href="#contact" class="mob-menu__link">Contact</a>
+    </nav>
+    <a href="#" class="mob-menu__cta">
+      <span>Book Consultation</span>
+      <img src="assets/b4_arrow.svg" class="mob-menu__cta-arrow" alt="" />
+    </a>
+  </div>
+
   <nav class="hero__nav">
     <img class="hero__logo" src="assets/logo.svg" alt="TH" />
+    <button class="hero__menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1"  x2="24" y2="1"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="9"  x2="24" y2="9"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="17" x2="24" y2="17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
     <ul class="hero__nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -140,7 +175,7 @@
 
   <div class="hero__desc">
     <p>Barber, educator and mentor based in Los Angeles.</p>
-    <p>Over 9 years of experience in barbering, education<br>and professional development.</p>
+    <p>Over 9 years of experience in barbering, education <br>and professional development.</p>
   </div>
 
   <a href="#" class="hero__more-btn">
@@ -192,9 +227,11 @@
       development of modern barber education, events and professional culture.
     </p>
 
-    <img class="about__photo-main" src="assets/portrait-main.jpg" alt="Taras Hrytskiv portrait" />
-    <img class="about__photo-small-tr" src="assets/dsc01635.webp" alt="Barbershop" />
-    <img class="about__photo-small-bl" src="assets/dsc01629.webp" alt="Barber at work" />
+    <div class="about__photos-mob">
+      <img class="about__photo-small-bl" src="assets/dsc01629.webp" alt="Barber at work" />
+      <img class="about__photo-main" src="assets/portrait-main.jpg" alt="Taras Hrytskiv portrait" />
+      <img class="about__photo-small-tr" src="assets/dsc01635.webp" alt="Barbershop" />
+    </div>
 
     <p class="about__col-right-1">
       Over the years, I helped organize barber masterclasses and industry events
@@ -367,26 +404,38 @@
 
   <a href="#" class="b6__view-more"><span id="b6ViewMore"></span></a>
 
-  <div class="b6__mag-wrap b6__mag-wrap-1">
-    <div class="b6__mag b6__mag-1">
-      <img src="assets/b6_photo.webp" alt="Fast Company" />
-    </div>
-  </div>
-  <a href="#" class="b6__read b6__read-1"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+  <div class="b6__carousel">
+    <div class="b6__track" id="b6Track">
 
-  <div class="b6__mag-wrap b6__mag-wrap-2">
-    <div class="b6__mag b6__mag-2">
-      <img src="assets/b6_photo.webp" alt="Forbes" />
-    </div>
-  </div>
-  <a href="#" class="b6__read b6__read-2"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+      <div class="b6__slide">
+        <a href="https://thebarbertoday.com/taras-hrytskiv/?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="b6__mag-wrap b6__mag-wrap-1">
+          <div class="b6__mag b6__mag-1">
+            <img src="assets/b6_barber_today.webp" alt="Barber Today" />
+          </div>
+        </a>
+        <a href="https://thebarbertoday.com/taras-hrytskiv/?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="b6__read b6__read-1"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+      </div>
 
-  <div class="b6__mag-wrap b6__mag-wrap-3">
-    <div class="b6__mag b6__mag-3">
-      <img src="assets/journal03.webp" alt="Journal 03" />
+      <div class="b6__slide">
+        <a href="#" class="b6__mag-wrap b6__mag-wrap-2">
+          <div class="b6__mag b6__mag-2">
+            <img src="assets/b6_fc.webp" alt="Fast Company" />
+          </div>
+        </a>
+        <a href="#" class="b6__read b6__read-2"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+      </div>
+
+      <div class="b6__slide">
+        <a href="#" class="b6__mag-wrap b6__mag-wrap-3">
+          <div class="b6__mag b6__mag-3">
+            <img src="assets/journal03.webp" alt="Esquire" />
+          </div>
+        </a>
+        <a href="#" class="b6__read b6__read-3"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
+      </div>
+
     </div>
   </div>
-  <a href="#" class="b6__read b6__read-3"><span>Read More</span><img src="assets/b6_arrow_sm.svg" alt="" /></a>
 
 </section>
 
@@ -414,9 +463,9 @@
 
   <p class="ft__col-title ft__col-title-contact">Contact</p>
   <div class="ft__contact">
-    <a href="mailto:hello@tarashrytskiv.com">hello@tarashrytskiv.com</a>
-    <a href="tel:+17472878064">+1 (747) 287 80 64</a>
-    <span>Los Angeles, CA</span>
+    <a href="mailto:taras.gritskiv98@gmail.com">taras.gritskiv98@gmail.com</a>
+    <a href="tel:+12673309881">+1 (267) 330 98 81</a>
+    <span>Los Angeles, Hollywood, CA</span>
   </div>
 
   <p class="ft__col-title ft__col-title-talk">Let's Talk</p>
@@ -554,23 +603,36 @@
 
 // ═══ BLOCK 4 — Carousel ═══
 (function() {
-  const track = document.getElementById('b4Track');
-  const MAX = 1;
+  const track    = document.getElementById('b4Track');
+  const carousel = document.querySelector('.b4__carousel');
+  const TOTAL    = document.querySelectorAll('.b4__photo-wrap').length; // 5
   let current = 0;
   let scrollOffset = 0;
 
-  // Pre-apply transform so GPU layer is promoted at load, not on first click
   track.style.transform = 'translateX(0px)';
 
-  // vw-based calculation — no DOM read, no forced reflow
+  function isMob() { return window.innerWidth <= 768; }
+
+  // Desktop: 19.792vw + 0.625vw gap = 20.417vw
+  // Mobile:  285px slide + 10px gap = 295px
   function getSlideWidth() {
-    // card: 19.792vw + gap: 0.625vw = 20.417vw
-    return window.innerWidth * 0.20417;
+    return isMob() ? 295 : window.innerWidth * 0.20417;
+  }
+
+  function getMax() {
+    return isMob() ? TOTAL - 1 : 1;
+  }
+
+  // Mobile: last photo right-aligned in container (20px padding each side → container=350px)
+  // maxOffset = TOTAL*(slide+gap) - gap - container = 5*295 - 10 - 350 = 1115
+  function getMaxOffset() {
+    if (isMob()) return TOTAL * 295 - 10 - (window.innerWidth - 40);
+    return getSlideWidth() * 1;
   }
 
   function goTo(idx) {
-    current = Math.max(0, Math.min(idx, MAX));
-    scrollOffset = current * getSlideWidth();
+    current = Math.max(0, Math.min(idx, getMax()));
+    scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
     track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }
@@ -578,14 +640,35 @@
   document.querySelector('.b4__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
   document.querySelector('.b4__nav-btn--right').addEventListener('click', () => goTo(current + 1));
 
-  document.querySelector('.b4__carousel').addEventListener('wheel', e => {
+  // Desktop: horizontal scroll wheel
+  carousel.addEventListener('wheel', e => {
     if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
     e.preventDefault();
-    scrollOffset = Math.max(0, Math.min(scrollOffset + e.deltaX, getSlideWidth() * MAX));
+    scrollOffset = Math.max(0, Math.min(scrollOffset + e.deltaX, getMaxOffset()));
     track.style.transition = 'none';
     track.style.transform = `translateX(-${scrollOffset}px)`;
     current = Math.round(scrollOffset / getSlideWidth());
   }, { passive: false });
+
+  // Mobile: touch swipe
+  let touchStartX = 0;
+  let touchStartOffset = 0;
+  carousel.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartOffset = scrollOffset;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', e => {
+    const dx = touchStartX - e.touches[0].clientX;
+    scrollOffset = Math.max(0, Math.min(touchStartOffset + dx, getMaxOffset()));
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', () => {
+    current = Math.round(scrollOffset / getSlideWidth());
+    goTo(current);
+  });
 })();
 
 
@@ -674,6 +757,111 @@
   }, { threshold: 0.15 });
 
   obs.observe(document.querySelector('.b5'));
+})();
+
+
+// ═══ MOBILE MENU ═══
+(function() {
+  const menu      = document.getElementById('mobMenu');
+  const openBtn   = document.querySelector('.hero__menu-btn');
+  const closeBtn  = document.getElementById('mobMenuClose');
+  const links     = menu.querySelectorAll('.mob-menu__link, .mob-menu__cta');
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  // Close on nav link tap
+  links.forEach(link => link.addEventListener('click', closeMenu));
+})();
+
+
+// ═══ BLOCK 6 — Carousel (mobile) ═══
+(function() {
+  const track    = document.getElementById('b6Track');
+  const carousel = document.querySelector('.b6__carousel');
+  const TOTAL    = document.querySelectorAll('.b6__slide').length; // 3
+  let current = 0, scrollOffset = 0;
+
+  track.style.transform = 'translateX(0px)';
+
+  function isMob() { return window.innerWidth <= 768; }
+  // slide:230px + gap:10px = 240px step
+  function getSlideWidth() { return isMob() ? 240 : 0; }
+  // last slide right-aligned with 20px margin: 3*240 + 10 - (vw-20)
+  function getMaxOffset() { return isMob() ? TOTAL * 240 + 10 - (window.innerWidth - 20) : 0; }
+  function getMax() { return isMob() ? TOTAL - 1 : 0; }
+
+  function goTo(idx) {
+    if (!isMob()) return;
+    current = Math.max(0, Math.min(idx, getMax()));
+    scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
+    track.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)';
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+  }
+
+  document.querySelector('.b6__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
+  document.querySelector('.b6__nav-btn--right').addEventListener('click', () => goTo(current + 1));
+
+  // Touch swipe
+  let touchStartX = 0, touchStartOffset = 0;
+  carousel.addEventListener('touchstart', e => {
+    if (!isMob()) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartOffset = scrollOffset;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', e => {
+    if (!isMob()) return;
+    const dx = touchStartX - e.touches[0].clientX;
+    scrollOffset = Math.max(0, Math.min(touchStartOffset + dx, getMaxOffset()));
+    track.style.transform = `translateX(-${scrollOffset}px)`;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', () => {
+    if (!isMob()) return;
+    current = Math.round(scrollOffset / getSlideWidth());
+    goTo(current);
+  });
+
+  // ── Touch tilt effect on magazine covers (mobile) ──
+  if (isMob()) {
+    document.querySelectorAll('.b6__mag-wrap').forEach(wrap => {
+      let startX = 0, startY = 0, swiped = false;
+
+      wrap.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        swiped = false;
+        wrap.classList.add('touch-tilt');
+      }, { passive: true });
+
+      wrap.addEventListener('touchmove', e => {
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > 8 || dy > 8) {
+          swiped = true;
+          wrap.classList.remove('touch-tilt');
+        }
+      }, { passive: true });
+
+      wrap.addEventListener('touchend', () => {
+        setTimeout(() => wrap.classList.remove('touch-tilt'), swiped ? 0 : 350);
+      }, { passive: true });
+    });
+  }
 })();
 
 

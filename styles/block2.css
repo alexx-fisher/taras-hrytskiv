@@ -104,8 +104,8 @@
 }
 
 .about__intro .accent {
-  font-weight: 500;
-  color: #777165;
+  font-weight: 400;
+  color: #fff;
 }
 
 /* Story paragraph */
@@ -122,8 +122,8 @@
 }
 
 .about__story .accent {
-  font-weight: 500;
-  color: #777165;
+  font-weight: 400;
+  color: #fff;
 }
 
 /* Right column */
@@ -165,8 +165,8 @@
 }
 
 .about__method .accent {
-  font-weight: 500;
-  color: #777165;
+  font-weight: 400;
+  color: #fff;
 }
 
 .about__belief {
@@ -180,6 +180,17 @@
   line-height: 19px;
   color: #fff;
 }
+
+/* Desktop: wrapper is transparent full-size layer so photos keep their absolute coords */
+.about__photos-mob {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.about__photos-mob img { pointer-events: auto; }
 
 /* Photos — hover scale with snap cubic-bezier */
 .about__photo-main,
@@ -225,4 +236,138 @@
   height: 170px;
   object-fit: cover;
   object-position: center top;
+}
+
+/* ══════════════════════════════════════════
+   BLOCK 2 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .about {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+
+  .about__inner {
+    height: auto;
+    padding: 0 20px;
+  }
+
+  /* ── Title ── */
+  .about__title {
+    position: relative;
+    left: auto;
+    top: auto;
+    font-size: 45px;
+    line-height: 55px;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  /* ── Intro ── */
+  .about__intro {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* ── Story ── */
+  .about__story {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 32px;
+  }
+
+  /* ── Photo grid: точные Figma-координаты (visible area) ── */
+  .about__photos-mob {
+    position: relative;
+    width: 100%;
+    height: 435px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  /* 113×113 — левый верхний, left:0 = page x:20 (mask offset компенсирован) */
+  .about__photo-small-bl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 113px;
+    height: 113px;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 2;
+  }
+
+  /* 280×364 — портрет, page x:55 → container x:35, top:18px */
+  .about__photo-main {
+    position: absolute;
+    left: 35px;
+    top: 18px;
+    width: 280px;
+    height: 364px;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+  }
+
+  /* 170×170 — правый нижний, page x:201 → container x:181, top:263px */
+  .about__photo-small-tr {
+    position: absolute;
+    left: 181px;
+    top: 263px;
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 2;
+  }
+
+  /* ── Right-col texts — stacked vertically ── */
+  .about__col-right-1 {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+
+  .about__col-right-2 {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 32px;
+  }
+
+  .about__method {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+
+  .about__belief {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+  }
 }

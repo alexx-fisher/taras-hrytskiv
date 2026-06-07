@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Method — Taras Hrytskiv</title>
   <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
   <link rel="stylesheet" href="styles/bbm-hero.css" />
   <link rel="stylesheet" href="styles/method-hero.css" />
   <link rel="stylesheet" href="styles/method-b2.css" />
@@ -19,6 +20,29 @@
 
 <!-- ═══ METHOD HERO ═══ -->
 <section class="method-hero">
+
+  <!-- Mobile menu overlay -->
+  <div class="mob-menu" id="mobMenu" aria-hidden="true">
+    <button class="mob-menu__close" id="mobMenuClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none">
+        <line x1="2" y1="2" x2="22" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="2" x2="2" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav class="mob-menu__nav">
+      <a href="index.html" class="mob-menu__link">Home</a>
+      <a href="index.html#about" class="mob-menu__link">About</a>
+      <a href="mentorship.html" class="mob-menu__link">Mentorship</a>
+      <a href="index.html#works" class="mob-menu__link">Works</a>
+      <a href="method.html" class="mob-menu__link active">Method</a>
+      <a href="index.html#media" class="mob-menu__link">Media</a>
+      <a href="#contact" class="mob-menu__link">Contact</a>
+    </nav>
+    <a href="#" class="mob-menu__cta">
+      <span>Book Consultation</span>
+      <img src="assets/b4_arrow.svg" class="mob-menu__cta-arrow" alt="" />
+    </a>
+  </div>
 
   <!-- Background (same technique as bbm-hero / index.html) -->
   <div class="method-hero__mask-group">
@@ -39,6 +63,13 @@
   <!-- Navigation (reuses bbm-hero nav styles) -->
   <nav class="bbm-hero__nav">
     <img class="bbm-hero__logo" src="assets/logo.svg" alt="TH" />
+    <button class="bbm-hero__menu-btn" id="bbmMenuBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1"  x2="24" y2="1"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="9"  x2="24" y2="9"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="17" x2="24" y2="17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
     <ul class="bbm-hero__nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -70,7 +101,7 @@
 
   <!-- More Details CTA -->
   <a href="#" class="method-hero__more-btn">
-    <span>Access The Method</span>
+    <span>More Details</span>
     <img class="arrow" src="assets/arrow.svg" alt="" />
   </a>
 
@@ -269,6 +300,23 @@
 
   const s = document.querySelector('.method-b3');
   if (s) obs.observe(s);
+})();
+</script>
+
+<script>
+(function () {
+  const btn   = document.getElementById('bbmMenuBtn');
+  const menu  = document.getElementById('mobMenu');
+  const close = document.getElementById('mobMenuClose');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+  });
+  close.addEventListener('click', () => {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+  });
 })();
 </script>
 

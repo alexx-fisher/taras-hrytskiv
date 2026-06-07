@@ -145,3 +145,83 @@
 /* Col3: left=1037/1440=71.944vw */
 .bbm-b5__card--c3r1 { left: 71.944vw; top: 17.639vw; } /* 1037, 254 */
 .bbm-b5__card--c3r2 { left: 71.944vw; top: 27.569vw; } /* 1037, 397 */
+
+/* ══════════════════════════════════════════
+   BBM BLOCK 5 MOBILE  ≤ 768px
+   Ref: Figma node 319:990 — "mob" 390×1140
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Section: 1140px tall, bg #030303 */
+  .bbm-b5 {
+    height: 1092px;
+    background: #0c0c0c;
+    margin-bottom: 80px;
+  }
+
+  /* ── Heading: x:19 y:50 w:343 fs:45 lh:45 fw:200 ── */
+  .bbm-b5__heading {
+    left: 19px;
+    top: 50px;
+    width: 343px;
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 200;
+  }
+
+  /* ── Subtitle: x:19 y:170 w:197 fs:17 lh:22 ── */
+  .bbm-b5__subtitle {
+    left: 19px;
+    top: 170px;
+    width: 197px;
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  /* ── Cards: 352×133, stacked, 10px gaps ── */
+  .bbm-b5__card {
+    width: 352px;
+    height: 133px;
+    left: 19px;
+    background: #161616;
+    border: 1px solid #1e1e1e;
+    padding: 0;
+    display: block;   /* override desktop flex */
+    position: absolute;
+  }
+
+  /* Num: top:16px left:26px — from card-top/left */
+  .bbm-b5__num {
+    position: absolute;
+    top: 16px;
+    left: 26px;
+    font-size: 12px;
+    line-height: 22px;
+    color: #525252;
+  }
+
+  /* Label: top:52px left:26px, width exact per Figma */
+  .bbm-b5__label {
+    position: absolute;
+    top: 52px;
+    left: 26px;
+    font-size: 17px;
+    line-height: 20px;
+    color: #fff;
+  }
+
+  /* ── Card positions + exact label widths from Figma ── */
+  .bbm-b5__card--c1r1 { top: 244px; background-image: url('../assets/bbm_b5_card1_bg.webp'); background-size: cover; background-position: center; }
+  .bbm-b5__card--c2r1 { top: 387px; }
+  .bbm-b5__card--c3r1 { top: 530px; }
+  .bbm-b5__card--c1r2 { top: 673px; }
+  .bbm-b5__card--c2r2 { top: 816px; }
+  .bbm-b5__card--c3r2 { top: 959px; }
+
+  .bbm-b5__card--c1r1 .bbm-b5__label { width: 225px; }
+  .bbm-b5__card--c2r1 .bbm-b5__label { width: 157px; }
+  .bbm-b5__card--c3r1 .bbm-b5__label { width: 173px; }
+  .bbm-b5__card--c1r2 .bbm-b5__label { width: 193px; }
+  .bbm-b5__card--c2r2 .bbm-b5__label { width: 192px; }
+  .bbm-b5__card--c3r2 .bbm-b5__label { width: 212px; }
+}

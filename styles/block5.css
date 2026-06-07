@@ -132,3 +132,61 @@
 
 .b5__h-line.anim-done, .b5__subtitle.anim-done,
 .b5__img-wrap.anim-done, .b5__btn.anim-done { opacity: 1; }
+
+/* ══════════════════════════════════════════
+   BLOCK 5 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .b5 {
+    height: 902px;
+    overflow: hidden;
+  }
+
+  /* ── Heading ── */
+  .b5__heading {
+    left: 20px;
+    top: 50px;
+    width: 342px;
+    font-size: 45px;
+    line-height: 45px;
+  }
+
+  /* ── Subtitle ── */
+  .b5__subtitle {
+    left: 20px;
+    top: 209px;
+    width: 330px;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  /* ── Image: Figma visible area = left:20px top:374px 351×398px ── */
+  .b5__img-wrap {
+    left: 20px;
+    top: 374px;
+    width: 351px;
+    height: 398px;
+    clip-path: none;
+    overflow: hidden;
+  }
+
+  /* ── Button ── */
+  .b5__btn {
+    left: 20px;
+    top: 812px;
+    width: 350px;
+    height: 70px;
+    padding: 0 24px;
+  }
+
+  .b5__btn span {
+    font-size: 14px;
+    letter-spacing: 1.47px;
+  }
+
+  .b5__btn .arrow {
+    width: 14px;
+    height: 14px;
+  }
+}

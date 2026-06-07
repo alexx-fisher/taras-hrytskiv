@@ -230,3 +230,150 @@
 }
 
 .bbm-b6__apply-btn:hover span { color: #fff; }
+
+/* ══════════════════════════════════════════
+   BBM BLOCK 6 MOBILE  ≤ 768px
+   Ref: Figma node 319:1058 — "mob" 390×1325
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Section: exact content height */
+  .bbm-b6 {
+    height: 1272px;
+    background: #0c0c0c;
+    margin-bottom: 80px;
+  }
+
+  /* ── Heading: x:20 y:50 fs:45 fw:200 lh:45 ── */
+  .bbm-b6__heading {
+    left: 20px;
+    top: 50px;
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 200;
+  }
+
+  /* ── Subtitle: x:20 y:119 w:307 fs:16 lh:22 ── */
+  .bbm-b6__subtitle {
+    left: 20px;
+    top: 119px;
+    width: 307px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  /* ── Tags: 55px tall, pill shape ── */
+  .bbm-b6__tag {
+    height: 55px;
+    border-radius: 27.5px;
+    font-size: 17px;
+    padding: 0 16px;
+  }
+
+  .bbm-b6__tag--1 { left: 21px;  top: 225px; width: 200px; }
+  .bbm-b6__tag--2 { left: 172px; top: 280px; width: 200px; }
+  .bbm-b6__tag--3 { left: 21px;  top: 335px; width: 200px; }
+  .bbm-b6__tag--4 { left: 172px; top: 390px; width: 200px; }
+  .bbm-b6__tag--5 { left: 21px;  top: 445px; width: 306px; }
+  .bbm-b6__tag--6 { left: 132px; top: 500px; width: 240px; }
+
+  /* ── Module rows: absolute, flex-wrap ── */
+  .bbm-b6__row {
+    left: 21px;
+    width: 351px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .bbm-b6__row--1 { top: 625px;  }
+  .bbm-b6__row--2 { top: 727px;  }
+  .bbm-b6__row--3 { top: 823px;  }
+  .bbm-b6__row--4 { top: 927px;  }
+  .bbm-b6__row--5 { top: 1053px; }
+
+  /* Bullet: 19×19 */
+  .bbm-b6__bullet {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+  }
+
+  /* Module title: x:64, so left-offset = 24px after bullet */
+  .bbm-b6__mod {
+    flex: 1;
+    font-size: 20px;
+    line-height: 22px;
+    padding-left: 24px;
+    width: auto;
+  }
+
+  /* Description: full width, indented to x:64 (43px from row left=21px) */
+  .bbm-b6__desc {
+    width: 100%;
+    font-size: 17px;
+    line-height: 22px;
+    margin-top: 18px;
+    padding-left: 43px;
+    box-sizing: border-box;
+  }
+
+  /* Module 4: desc wraps (override desktop nowrap) */
+  .bbm-b6__desc--nowrap {
+    white-space: normal;
+    width: 100%;
+  }
+
+  /* ── Dividers: x:21, w:351 ── */
+  .bbm-b6__divider {
+    left: 21px;
+    width: 351px;
+    height: 1px;
+    background: #1e1e1e;
+  }
+
+  .bbm-b6__divider--1 { top: 610px;  }
+  .bbm-b6__divider--2 { top: 707px;  }
+  .bbm-b6__divider--3 { top: 803px;  }
+  .bbm-b6__divider--4 { top: 907px;  }
+  .bbm-b6__divider--5 { top: 1033px; }
+  .bbm-b6__divider--6 { top: 1152px; }
+
+  /* ── Apply button: x:21 y:1212, circle 60px + btn 291px ── */
+  .bbm-b6__apply {
+    left: 21px;
+    top: 1212px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bbm-b6__apply-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bbm-b6__apply-circle img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .bbm-b6__apply-btn {
+    height: 60px;
+    width: 291px;
+    border-radius: 30px;
+  }
+
+  .bbm-b6__apply-btn::after {
+    border-radius: 30px;
+    clip-path: inset(0 100% 0 0 round 30px);
+  }
+
+  .bbm-b6__apply-btn:hover::after {
+    clip-path: inset(0 0% 0 0 round 30px);
+  }
+
+  .bbm-b6__apply-btn span {
+    font-size: 16px;
+    letter-spacing: 1.68px;
+  }
+}

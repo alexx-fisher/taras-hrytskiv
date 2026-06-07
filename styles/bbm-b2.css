@@ -24,6 +24,9 @@
   height: 26.389vw;  /* 380/1440 */
 }
 
+/* Hide dot on desktop */
+.bbm-b2__dot { display: none; }
+
 /* ── Columns ── */
 .bbm-b2__col {
   position: absolute;
@@ -67,4 +70,64 @@
 .bbm-b2__divider-2 {
   left: 66.597vw;    /* 959/1440 */
   height: 10.417vw;  /* 150/1440 */
+}
+
+/* ══════════════════════════════════════════
+   BBM BLOCK 2 MOBILE  ≤ 768px
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .bbm-b2 {
+    height: 593px;
+    margin-bottom: 80px;
+  }
+
+  /* Hide desktop vertical dividers */
+  .bbm-b2__divider { display: none; }
+
+  /* Cards: stacked, backgrounds from Figma */
+  .bbm-b2__col {
+    position: absolute;
+    left: 20px;
+    width: 351px;
+    border: 1px solid #323232;
+    overflow: hidden;
+    top: auto;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bbm-b2__col-1 { top: 20px;  height: 200px; background-color: #050505; background-image: url('../assets/bbm_b2_card1_bg.webp'); }
+  .bbm-b2__col-2 { top: 230px; height: 200px; background-color: #050505; background-image: url('../assets/bbm_b2_card2_bg.webp'); }
+  .bbm-b2__col-3 { top: 440px; height: 153px; background-color: #050505; background-image: url('../assets/bbm_b2_card3_bg.webp'); }
+
+  /* Dot — separate shape element, top:30px right:20px */
+  .bbm-b2__dot {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Icon */
+  .bbm-b2__icon {
+    position: absolute;
+    left: 21px;
+    top: 28px;
+    width: 29px;
+    height: 29px;
+    margin-bottom: 0;
+  }
+
+  /* Text */
+  .bbm-b2__text {
+    position: absolute;
+    left: 21px;
+    top: 84px;
+    right: 21px;
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Barber Brand Mentorship — Taras Hrytskiv</title>
   <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
   <link rel="stylesheet" href="styles/bbm-hero.css" />
   <link rel="stylesheet" href="styles/method-hero.css" />
   <link rel="stylesheet" href="styles/bbm-b2.css" />
@@ -36,8 +37,38 @@
     <span>EDUCATOR &amp; MENTOR</span>
   </div>
 
+  <!-- Mobile menu overlay -->
+  <div class="mob-menu" id="mobMenu" aria-hidden="true">
+    <button class="mob-menu__close" id="mobMenuClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none">
+        <line x1="2" y1="2" x2="22" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="2" x2="2" y2="22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav class="mob-menu__nav">
+      <a href="index.html" class="mob-menu__link">Home</a>
+      <a href="index.html#about" class="mob-menu__link">About</a>
+      <a href="mentorship.html" class="mob-menu__link">Mentorship</a>
+      <a href="index.html#works" class="mob-menu__link">Works</a>
+      <a href="method.html" class="mob-menu__link">Method</a>
+      <a href="index.html#media" class="mob-menu__link">Media</a>
+      <a href="#contact" class="mob-menu__link">Contact</a>
+    </nav>
+    <a href="#" class="mob-menu__cta">
+      <span>Book Consultation</span>
+      <img src="assets/b4_arrow.svg" class="mob-menu__cta-arrow" alt="" />
+    </a>
+  </div>
+
   <nav class="bbm-hero__nav">
     <img class="bbm-hero__logo" src="assets/logo.svg" alt="TH" />
+    <button class="bbm-hero__menu-btn" id="bbmMenuBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1"  x2="24" y2="1"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="9"  x2="24" y2="9"  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="0" y1="17" x2="24" y2="17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
     <ul class="bbm-hero__nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -88,6 +119,7 @@
   <div class="bbm-b2__col bbm-b2__col-1">
     <img class="bbm-b2__icon" src="assets/bbm_icon_trending.svg" alt="" />
     <p class="bbm-b2__text">This mentorship program is designed for Ukrainian barbers who are building their careers in the United States and want to reach the next level of professional growth</p>
+    <img class="bbm-b2__dot" src="assets/bbm_b2_dot.webp" alt="" />
   </div>
 
   <div class="bbm-b2__divider bbm-b2__divider-1"></div>
@@ -95,6 +127,7 @@
   <div class="bbm-b2__col bbm-b2__col-2">
     <img class="bbm-b2__icon" src="assets/bbm_icon_certificate.svg" alt="" />
     <p class="bbm-b2__text">The program is built on real-world experience in the barber industry, hands-on work with clients in the U.S., and a personalized mentorship approach</p>
+    <img class="bbm-b2__dot" src="assets/bbm_b2_dot.webp" alt="" />
   </div>
 
   <div class="bbm-b2__divider bbm-b2__divider-2"></div>
@@ -102,6 +135,7 @@
   <div class="bbm-b2__col bbm-b2__col-3">
     <img class="bbm-b2__icon" src="assets/bbm_icon_document.svg" alt="" />
     <p class="bbm-b2__text">This is not a traditional online course or a theoretical guide</p>
+    <img class="bbm-b2__dot" src="assets/bbm_b2_dot.webp" alt="" />
   </div>
 
 </section>
@@ -138,35 +172,42 @@
 
   <!-- Row 1 -->
   <div class="bbm-b4__item bbm-b4__item--r1c1">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_calendar.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_calendar.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_calendar_mob.svg" alt="" />
     <p class="bbm-b4__text">WANT A CONSISTENT FLOW OF CLIENTS</p>
   </div>
   <div class="bbm-b4__item bbm-b4__item--r1c2">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_case.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_case.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_case_mob.svg" alt="" />
     <p class="bbm-b4__text">PLAN TO BECOME SELF-EMPLOYED OR OPEN THEIR OWN BUSINESS</p>
   </div>
   <div class="bbm-b4__item bbm-b4__item--r1c3">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_dollar.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_dollar.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_dollar_mob.svg" alt="" />
     <p class="bbm-b4__text">WANT TO INCREASE THEIR SERVICE PRICES</p>
   </div>
 
   <!-- Row 2 -->
   <div class="bbm-b4__item bbm-b4__item--r2c1">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_star.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_star.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_star_mob.svg" alt="" />
     <p class="bbm-b4__text">WANT TO BUILD A STRONG PERSONAL BRAND</p>
   </div>
   <div class="bbm-b4__item bbm-b4__item--r2c2">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_camera.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_camera.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_camera_mob.svg" alt="" />
     <p class="bbm-b4__text">WANT TO CREATE CONTENT THAT ATTRACTS CLIENTS</p>
   </div>
   <div class="bbm-b4__item bbm-b4__item--r2c3">
-    <img class="bbm-b4__icon" src="assets/bbm_icon_chart.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--desk" src="assets/bbm_icon_chart.svg" alt="" />
+    <img class="bbm-b4__icon bbm-b4__icon--mob" src="assets/bbm_b4_icon_chart_mob.svg" alt="" />
     <p class="bbm-b4__text">WANT TO REACH THE NEXT LEVEL IN THEIR PROFESSION</p>
   </div>
 
   <!-- Barber photo -->
   <div class="bbm-b4__photo-wrap">
-    <img class="bbm-b4__photo" src="assets/bbm_b4_photo.webp" alt="" />
+    <img class="bbm-b4__photo bbm-b4__photo--desk" src="assets/bbm_b4_photo.webp" alt="" />
+    <img class="bbm-b4__photo bbm-b4__photo--mob" src="assets/bbm_b4_photo_mob.webp" alt="" />
   </div>
 
 </section>
@@ -257,7 +298,7 @@
   <div class="bbm-b6__row bbm-b6__row--4">
     <img class="bbm-b6__bullet" src="assets/bbm_b6_bullet.svg" alt="" />
     <span class="bbm-b6__mod">MODULE 4</span>
-    <span class="bbm-b6__desc bbm-b6__desc--nowrap">Client Service &amp; Communication That Builds Trust</span>
+    <span class="bbm-b6__desc bbm-b6__desc--nowrap">Client Service &amp; Communication<br>That Builds Trust</span>
   </div>
 
   <div class="bbm-b6__divider bbm-b6__divider--5"></div>
@@ -304,9 +345,9 @@
 
   <p class="ft__col-title ft__col-title-contact">Contact</p>
   <div class="ft__contact">
-    <a href="mailto:hello@tarashrytskiv.com">hello@tarashrytskiv.com</a>
-    <a href="tel:+17472878064">+1 (747) 287 80 64</a>
-    <span>Los Angeles, CA</span>
+    <a href="mailto:taras.gritskiv98@gmail.com">taras.gritskiv98@gmail.com</a>
+    <a href="tel:+12673309881">+1 (267) 330 98 81</a>
+    <span>Los Angeles, Hollywood, CA</span>
   </div>
 
   <p class="ft__col-title ft__col-title-talk">Let's Talk</p>
@@ -321,6 +362,28 @@
 
 
 <script>
+// ═══ MOBILE MENU ═══
+(function() {
+  const menu = document.getElementById('mobMenu');
+  const openBtn = document.getElementById('bbmMenuBtn');
+  const closeBtn = document.getElementById('mobMenuClose');
+  const links = menu.querySelectorAll('.mob-menu__link, .mob-menu__cta');
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  if (openBtn) openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  links.forEach(link => link.addEventListener('click', closeMenu));
+})();
+
 // ═══ BBM BLOCK 2 — Scroll animations ═══
 (function() {
   function animIn(el) {

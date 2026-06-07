@@ -186,3 +186,107 @@
 }
 
 .method-b3__btn:hover .method-b3__btn-pill span { color: #fff; }
+
+/* ══════════════════════════════════════════
+   METHOD BLOCK 3 MOBILE  ≤ 768px
+   Ref: Figma node 328:1250 — 390px wide
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Section height: button bottom = 1155+60 = 1215px */
+  .method-b3 {
+    height: 1215px;
+    background: #0c0c0c;
+    margin-bottom: 80px;
+  }
+
+  /* ── Heading: x:20 y:50 w:299 fs:45 lh:45 fw:100 ── */
+  .method-b3__heading {
+    left: 20px;
+    top: 50px;
+    width: 299px;
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 100;
+  }
+
+  /* ── Cards: left:22 w:351 h:153, stacked vertically ── */
+  .method-b3__card {
+    left: 22px;
+    width: 351px;
+    height: 153px;
+    padding: 36px 16px 16px 35px;
+    gap: 11px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Card vertical positions: gap = 5px between cards */
+  .method-b3__card--1 { top: 190px; }
+  .method-b3__card--2 { top: 348px; }
+  .method-b3__card--3 { top: 506px; }
+  .method-b3__card--4 { top: 664px; }
+  .method-b3__card--5 { top: 822px; }
+
+  /* Reset desktop width overrides for cards 2+4 */
+  .method-b3__card--2,
+  .method-b3__card--4 { width: 351px; }
+
+  /* ── Card number: fs:15 lh:22 ── */
+  .method-b3__num {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  /* ── Card text: fs:17 lh:22 ── */
+  .method-b3__text {
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  /* ── Description: x:51 y:1025 w:312 fs:17 lh:20 (not uppercase) ── */
+  .method-b3__desc {
+    left: 51px;
+    top: 1025px;
+    width: 312px;
+    font-size: 17px;
+    line-height: 20px;
+    text-transform: none;
+  }
+
+  /* ── Button: x:22 y:1155, circle:60px + pill:w291 h60 ── */
+  .method-b3__btn {
+    left: 22px;
+    top: 1155px;
+  }
+
+  .method-b3__btn-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .method-b3__btn-circle img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .method-b3__btn-pill {
+    height: 60px;
+    width: 291px;
+    border-radius: 30px;
+  }
+
+  .method-b3__btn-pill::after {
+    border-radius: 30px;
+    clip-path: inset(0 100% 0 0 round 30px);
+  }
+
+  .method-b3__btn:hover .method-b3__btn-pill::after {
+    clip-path: inset(0 0% 0 0 round 30px);
+  }
+
+  .method-b3__btn-pill span {
+    font-size: 16px;
+    letter-spacing: 1.68px;
+  }
+}
