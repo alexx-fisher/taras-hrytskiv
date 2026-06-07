@@ -205,6 +205,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.25s ease;
+  touch-action: manipulation;
 }
 
 .b4__nav-btn:hover { transform: scale(1.12); }

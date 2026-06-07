@@ -622,12 +622,18 @@
   function goTo(idx) {
     current = Math.max(0, Math.min(idx, getMax()));
     scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
-    track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    track.style.transition = 'transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }
 
-  document.querySelector('.b4__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
-  document.querySelector('.b4__nav-btn--right').addEventListener('click', () => goTo(current + 1));
+  function addInstantHandler(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', () => { if (!didTouch) fn(); });
+  }
+
+  addInstantHandler(document.querySelector('.b4__nav-btn--left'),  () => goTo(current - 1));
+  addInstantHandler(document.querySelector('.b4__nav-btn--right'), () => goTo(current + 1));
 
   // Desktop: horizontal scroll wheel
   carousel.addEventListener('wheel', e => {
@@ -814,12 +820,18 @@
     if (!isMob()) return;
     current = Math.max(0, Math.min(idx, getMax()));
     scrollOffset = Math.min(current * getSlideWidth(), getMaxOffset());
-    track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    track.style.transition = 'transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     track.style.transform = `translateX(-${scrollOffset}px)`;
   }
 
-  document.querySelector('.b6__nav-btn--left').addEventListener('click',  () => goTo(current - 1));
-  document.querySelector('.b6__nav-btn--right').addEventListener('click', () => goTo(current + 1));
+  function addInstantHandler(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', () => { if (!didTouch) fn(); });
+  }
+
+  addInstantHandler(document.querySelector('.b6__nav-btn--left'),  () => goTo(current - 1));
+  addInstantHandler(document.querySelector('.b6__nav-btn--right'), () => goTo(current + 1));
 
   // Mobile: free swipe with momentum
   let touchStartX = 0, touchStartOffset = 0;
