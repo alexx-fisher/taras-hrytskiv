@@ -588,9 +588,15 @@
   function lbGo(idx) { lbIndex = (idx + photos.length) % photos.length; lightboxImg.src = photos[lbIndex]; }
   function closeLightbox() { lightbox.classList.remove('active'); }
 
-  closeBtn.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
-  lbPrev.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex - 1); });
-  lbNext.addEventListener('click', e => { e.stopPropagation(); lbGo(lbIndex + 1); });
+  function instantBtn(el, fn) {
+    let didTouch = false;
+    el.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
+    el.addEventListener('click', e => { e.stopPropagation(); if (!didTouch) fn(); });
+  }
+
+  instantBtn(closeBtn, closeLightbox);
+  instantBtn(lbPrev, () => lbGo(lbIndex - 1));
+  instantBtn(lbNext, () => lbGo(lbIndex + 1));
   lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
   document.addEventListener('keydown', e => {
     if (!lightbox.classList.contains('active')) return;
