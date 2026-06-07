@@ -386,10 +386,7 @@
   }
   if (openBtn) instantBtn(openBtn, openMenu);
   instantBtn(closeBtn, closeMenu);
-  links.forEach(link => {
-    link.addEventListener('touchstart', () => {}, { passive: true });
-    link.addEventListener('touchend', () => closeMenu());
-  });
+  links.forEach(link => link.addEventListener('click', closeMenu));
 })();
 
 // ═══ BBM BLOCK 2 — Scroll animations ═══

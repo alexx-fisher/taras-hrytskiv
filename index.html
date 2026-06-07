@@ -809,11 +809,7 @@
   instantBtn(openBtn, openMenu);
   instantBtn(closeBtn, closeMenu);
 
-  // Close on nav link tap — no preventDefault so navigation still works
-  links.forEach(link => {
-    link.addEventListener('touchstart', () => {}, { passive: true });
-    link.addEventListener('touchend', () => closeMenu());
-  });
+  links.forEach(link => link.addEventListener('click', closeMenu));
 })();
 
 

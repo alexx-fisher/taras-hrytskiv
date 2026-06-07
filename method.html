@@ -316,10 +316,9 @@
   }
   instantBtn(btn,   () => { menu.classList.add('is-open');    menu.setAttribute('aria-hidden', 'false'); });
   instantBtn(close, () => { menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true');  });
-  menu.querySelectorAll('.mob-menu__link, .mob-menu__cta').forEach(link => {
-    link.addEventListener('touchstart', () => {}, { passive: true });
-    link.addEventListener('touchend', () => { menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); });
-  });
+  menu.querySelectorAll('.mob-menu__link, .mob-menu__cta').forEach(link =>
+    link.addEventListener('click', () => { menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); })
+  );
 })();
 </script>
 
