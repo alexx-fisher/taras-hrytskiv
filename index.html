@@ -800,17 +800,20 @@
     document.body.style.overflow = '';
   }
 
-  function instant(el, fn) {
+  function instantBtn(el, fn) {
     let didTouch = false;
     el.addEventListener('touchend', e => { e.preventDefault(); didTouch = true; fn(); setTimeout(() => didTouch = false, 300); });
     el.addEventListener('click', () => { if (!didTouch) fn(); });
   }
 
-  instant(openBtn, openMenu);
-  instant(closeBtn, closeMenu);
+  instantBtn(openBtn, openMenu);
+  instantBtn(closeBtn, closeMenu);
 
-  // Close on nav link tap
-  links.forEach(link => instant(link, closeMenu));
+  // Close on nav link tap — no preventDefault so navigation still works
+  links.forEach(link => {
+    link.addEventListener('touchstart', () => {}, { passive: true });
+    link.addEventListener('touchend', () => closeMenu());
+  });
 })();
 
 
